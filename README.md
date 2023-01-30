@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-# DNCL→Python Translator
+# DNCL-Python-Translator
 This translates code written in DNCL(2011) into Python.
-
-## 初めに
-このプログラムはpdfs内のthesis.pdfの論文において使用するために作られたものです。関数ごとの実装はpdfs内appendixを参照してください。
 
 ## 使用方法
 このプログラムはDNCL(2011)をPythonに翻訳します。mainファイルmain関数内"input_filename"に入力データファイル(DNCL(2011)で書かれたコード)へのパスを、"output_filename"に出力データを入力するためのファイルへのパスを記入したのち、お好きなエディタで実行することができます。
