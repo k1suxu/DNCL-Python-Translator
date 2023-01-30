@@ -36,4 +36,3 @@ DNCL(2011年度版)をPythonに翻訳するプログラム及び正当性確保�
 <br>
 DNCL仕様書(2011年度版): https://web.archive.org/web/20220707074107/https://www.dnc.ac.jp/albums/abm00004841.pdf<br>
 (元URLが使えなくなっているためアーカイブサイトのURLを載せてあります。)
->>>>>>> 9e18fb9b47e79b363dd52709786874e0fd63e6f4
