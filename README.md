@@ -7,7 +7,7 @@ This translates code written in DNCL(2011) into Python.
 DNCL仕様書(2011年度版): https://web.archive.org/web/20220707074107/https://www.dnc.ac.jp/albums/abm00004841.pdf<br>
 (元のURLが使えなくなっているためアーカイブサイトのURLを載せてあります。)
 
-##注意点
+## 注意点
 
 ### 文字列型と数値型の加算
 文字列型と数値型の加算は未定義であるため、適宜翻訳後のファイルに変更を加える必要があります。<br>
