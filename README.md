@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # DNCL→Python Translator
 This translates code written in DNCL(2011) into Python.
 
@@ -33,3 +34,10 @@ Output_Datasにはサンプルコードの実行結果が載っています。Mi
 
 <br>
 *注意* 2014_3_2,2014_3_3,2015_3_3は想定していない挙動を含むコードのため実行結果が異なります。前者2つは配列に対するサイズ定義、3つ目は配列外参照が原因です。
+=======
+# DNCL-Python-Translator
+DNCL(2011年度版)をPythonに翻訳するプログラム及び正当性確保のためのテストデータと実行結果一覧です。<br>
+<br>
+DNCL仕様書(2011年度版): https://web.archive.org/web/20220707074107/https://www.dnc.ac.jp/albums/abm00004841.pdf<br>
+(元URLが使えなくなっているためアーカイブサイトのURLを載せてあります。)
+>>>>>>> 9e18fb9b47e79b363dd52709786874e0fd63e6f4
