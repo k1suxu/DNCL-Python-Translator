@@ -1,0 +1,45 @@
+Tensuのすべての値を0にする
+sowa←0, saiko←0, saitei←100
+Tensu←{0,58,86,92,30,98,61,57,19,40,29,2,86,3,30,95,98,59,97,33,81,2,50,4,19,5,49,69,46,40,56,24,64,58,29,41,65,70,77,32,14,76,44,95,2,50,42,61,99,93,29}
+TNinのすべての値を0にする
+bangoを1から50まで1ずつ増やしながら,
+        s←Tensu[bango]
+        sowa←s+sowa
+        もしs>saikoならば
+                saiko←s
+        を実行する
+        もしs<saiteiならば
+                saitei←s
+        を実行する
+        TNin[s]←TNin[s]+1
+を繰り返す
+
+heikin←sowa÷50
+heikinとsaikoとsaiteiを表示する
+
+GNinのすべての値を0にする
+GNin[100] ← TNin[100]
+tenを99から0まで1ずつ減らしながら、
+        GNin[ten]←GNin[ten+1]+TNin[ten]
+を繰り返す
+
+Tenjunのすべての値を0にする
+Tenbanのすべての値を0にする
+
+bangoを50から1まで1ずつ減らしながら、
+        s←Tensu[bango]
+        Tenjun[GNin[s]]←s
+        Tenban[GNin[s]]←bango
+        GNin[s]←GNin[s]-1
+を繰り返す
+
+juni←1
+juniとTenjun[1]とTenban[1]を表示する
+iを2から50まで1ずつ増やしながら、
+        もしTenjun[i]＜Tenjun[i-1]ならば
+                juni←i
+        を実行する
+        juniと":"とTenjun[i]と":"とTenban[i]を表示する
+を繰り返す
+
+FINISH CODE
