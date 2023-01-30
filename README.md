@@ -2,7 +2,13 @@
 This translates code written in DNCL(2011) into Python.
 
 ## 使用方法
-このプログラムはDNCL(2011)をPythonに翻訳します。mainファイルmain関数内"input_filename"に入力データファイル(DNCL(2011)で書かれたコード)へのパスを、"output_filename"に出力データを入力するためのファイルへのパスを記入したのち、お好きなエディタで実行することができます。
+このプログラムはDNCL(2011)をPythonに翻訳します。mainファイルmain関数内"input_filename"に入力データファイル(DNCL(2011)で書かれたコード)へのパスを、"output_filename"に出力データを入力するためのファイルへのパスを記入したのち、お好きなエディタで実行することができます。<br>
+<br>
+DNCL仕様書(2011年度版): https://web.archive.org/web/20220707074107/https://www.dnc.ac.jp/albums/abm00004841.pdf<br>
+(元のURLが使えなくなっているためアーカイブサイトのURLを載せてあります。)
+
+##注意点
+
 ### 文字列型と数値型の加算
 文字列型と数値型の加算は未定義であるため、適宜翻訳後のファイルに変更を加える必要があります。<br>
 numberが数値型、textが文字列型の変数であるとき、"number+text"のような演算を使用するコードを使用したい場合、翻訳後の"number+text"を「str(number)+text」のようにする必要があります。
@@ -31,8 +37,3 @@ Output_Datasにはサンプルコードの実行結果が載っています。Mi
 <br>
 *注意* 2014_3_2,2014_3_3,2015_3_3は想定していない挙動を含むコードのため実行結果が異なります。前者2つは配列に対するサイズ定義、3つ目は配列外参照が原因です。
 =======
-# DNCL-Python-Translator
-DNCL(2011年度版)をPythonに翻訳するプログラム及び正当性確保のためのテストデータと実行結果一覧です。<br>
-<br>
-DNCL仕様書(2011年度版): https://web.archive.org/web/20220707074107/https://www.dnc.ac.jp/albums/abm00004841.pdf<br>
-(元URLが使えなくなっているためアーカイブサイトのURLを載せてあります。)
