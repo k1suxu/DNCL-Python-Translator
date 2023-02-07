@@ -1,6 +1,6 @@
 # DNCL-Python-Translator
 This translates code written in DNCL(2011) into Python
-DNCL(2011)で書かれたコードをPythonコードの翻訳します。
+DNCL(2011)で書かれたコードをPythonコードの翻訳します。<br>
 __翻訳前ソースコードの最後(または適当な行)に"FINISH CODE"と書く必要があり、行頭からその行までを翻訳します。__
 
 ## DNCL(2011)
