@@ -1,5 +1,6 @@
 # DNCL-Python-Translator
-This translates code written in DNCL(2011) into Python.
+This translates code written in DNCL(2011) into Python
+DNCL(2011)で書かれたコードをPythonコードの翻訳します。翻訳前ソースコードの最後(または適当な行)に"FINISH CODE"と書く必要があり、行頭からその行までを翻訳します。
 
 ## DNCL(2011)
 DNCL仕様書(2011年度版): https://web.archive.org/web/20220707074107/https://www.dnc.ac.jp/albums/abm00004841.pdf<br>
