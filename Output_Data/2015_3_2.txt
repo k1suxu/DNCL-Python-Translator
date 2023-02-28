@@ -46,6 +46,6 @@ while x<xMasu or y<yMasu :
         tokuten=tokuten+M[x-1][y-1]
         
     
-print("ÅI“¾“_‚Í", tokuten, "“_‚Å‚ ‚éB", sep='', end='\n')
+print("æœ€çµ‚å¾—ç‚¹ã¯", tokuten, "ç‚¹ã§ã‚ã‚‹ã€‚", sep='', end='\n')
 
 
