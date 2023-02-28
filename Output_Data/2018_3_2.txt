@@ -51,9 +51,9 @@ while nutta != 0 :
 for y in range(1, tate, 1) :
     for x in range(1, yoko, 1) :
         if Masu[x-1][y-1] == 1 :
-            print("‚ñ†", sep='', end='\n')
+            print("Å°", sep='', end='\n')
         else :
-            print("‚ñ°", sep='', end='\n')
+            print("Å†", sep='', end='\n')
             
         
     print("\n", sep='', end='\n')
