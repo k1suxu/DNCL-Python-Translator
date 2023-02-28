@@ -22,17 +22,17 @@ def range(start :float, end :float, inc :float) -> list:
 Suji = defaultdict(lambda : "NONE")
 KuraiMoji = defaultdict(lambda : "NONE")
 Suji[1-1]=""
-Suji[2-1]="“ñ"
-Suji[3-1]="O"
-Suji[4-1]="l"
-Suji[5-1]="ŒÜ"
-Suji[6-1]="˜Z"
-Suji[7-1]="µ"
-Suji[8-1]="”ª"
-Suji[9-1]="‹ã"
-KuraiMoji[4-1]="ç"
-KuraiMoji[3-1]="•S"
-KuraiMoji[2-1]="\"
+Suji[2-1]="äºŒ"
+Suji[3-1]="ä¸‰"
+Suji[4-1]="å››"
+Suji[5-1]="äº”"
+Suji[6-1]="å…­"
+Suji[7-1]="ä¸ƒ"
+Suji[8-1]="å…«"
+Suji[9-1]="ä¹"
+KuraiMoji[4-1]="åƒ"
+KuraiMoji[3-1]="ç™¾"
+KuraiMoji[2-1]="å"
 KuraiMoji[1-1]=""
 
 kurai=1000
@@ -41,7 +41,7 @@ for keta in range(4, 1, -(1)) :
     d=n//kurai
     if d != 0 :
         if d == 1 and keta == 1 :
-            print("ˆê", sep='', end='\n')
+            print("ä¸€", sep='', end='\n')
         else :
             print(Suji[d-1], sep='', end='\n')
             print(KuraiMoji[keta-1], sep='', end='\n')
