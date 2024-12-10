@@ -1,0 +1,38 @@
+Sujiのすべての値を"NONE"にする
+KuraiMojiのすべての値を"NONE"にする
+OkinaKuraiMojiのすべての値を"NONE"にする
+Suji[1]←「」,Suji[2]←「二」,Suji[3]←「三」
+Suji[4]←「四」,Suji[5]←「五」,Suji[6]←「六」
+Suji[7]←「七」,Suji[8]←「八」,Suji[9]←「九」
+KuraiMoji[4]←「千」, KuraiMoji[3]←「百」
+KuraiMoji[2]←「十」, KuraiMoji[1]←「」
+OkinaKuraiMoji[3]←「億」, OkinaKuraiMoji[2]←「万」
+OkinaKuraiMoji[1]←「」
+
+okinaKurai←100000000
+x←123456789
+d←1
+kugiriを3から1まで1ずつ減らしながら、
+    n←x÷okinaKurai
+    もしd≠0ならば
+        kurai←1000
+        ketaを4から1まで1ずつ減らしながら、
+            d←n÷kurai
+            もしd≠0ならば
+                もしd=1かつketa=1ならば
+                    「一」を表示する
+                を実行し、そうでなければ
+                    Suji[d]を表示する
+                    KuraiMoji[keta]を表示する
+                を実行する
+            を実行する
+            n←n%kurai
+            kurai←kurai÷10
+        を繰り返す
+        OkinaKuraiMoji[kugiri]を表示する
+    を実行する
+    x←x%okinaKurai
+    okinaKurai←okinaKurai÷10000
+を繰り返す
+
+FINISH CODE

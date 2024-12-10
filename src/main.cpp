@@ -1,15 +1,13 @@
 #include<bits/stdc++.h>
-#include<Windows.h>
-using namespace std;
 
 int process_count = 0;
 int in_sentence_cnt = 0;
 int bracket_count = 0;
-const string tab = "    ";
-map<int, map<string, deque<tuple<string, int, int>>>> Undeclared_Arrays;
-map<string, deque<int>> pc;
-vector<string> Arrays;
-vector<string> output = {"#coding: shift_jis\n\n#Template Zone\nfrom collections import defaultdict\n\ndef range(start :float, end :float, inc :float) -> list:\n    list = []\n    if inc > 0:\n        while start <= end:\n            list.append(start)\n            start = start + inc\n    else:\n        while start >= end:\n            list.append(start)\n            start = start + inc\n    return list\n\n#Your Translated Code Zone\n\n\n"};
+const std::wstring tab = L"    ";
+std::map<int, std::map<std::wstring, std::deque<std::tuple<std::wstring, int, int>>>> Undeclared_Arrays;
+std::map<std::wstring, std::deque<int>> pc;
+std::vector<std::wstring> Arrays;
+std::vector<std::wstring> output = {L"#coding: shift_jis\n\n#Template Zone\nfrom collections import defaultdict\n\ndef range(start :float, end :float, inc :float) -> list:\n    list = []\n    if inc > 0:\n        while start <= end:\n            list.append(start)\n            start = start + inc\n    else:\n        while start >= end:\n            list.append(start)\n            start = start + inc\n    return list\n\n#Your Translated Code Zone\n\n\n"};
 int id = 1;
 
 class translator {
@@ -28,76 +26,63 @@ private:
         PRINT
     };
 
-    string ord_to_string(ord order) {
-        vector<string> s = {
-            "PROCESS_END",
-            "IF_A",
-            "IF_B",
-            "ELIF",
-            "ELSE",
-            "WHILE",
-            "FOR_INCREASING",
-            "FOR_DECREASING",
-            "DECLARE_ARRAY",
-            "VARIABLE",
-            "PRINT"
-        };
-        return s[order];
+    // std::string ord_to_string(ord order) {
+    //     std::vector<std::string> s = {
+    //         "PROCESS_END",
+    //         "IF_A",
+    //         "IF_B",
+    //         "ELIF",
+    //         "ELSE",
+    //         "WHILE",
+    //         "FOR_INCREASING",
+    //         "FOR_DECREASING",
+    //         "DECLARE_ARRAY",
+    //         "VARIABLE",
+    //         "PRINT"
+    //     };
+    //     return s[order];
+    // }
+
+    // UTF-8からワイド文字列に変換するヘルパー関数
+    std::wstring utf8_to_wstring(const std::string &utf8) {
+        std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
+        return converter.from_bytes(utf8);
     }
 
-    string remove_spaces(string sentence) {
-        string close_id = "";
-        string ret = "";
-        int len = (int)sentence.size();
-        bool skip = false;
+    // ワイド文字列からUTF-8文字列に変換するヘルパー関数
+    std::string wstring_to_utf8(const std::wstring &wstr) {
+        std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
+        return converter.to_bytes(wstr);
+    }
 
-        for(int i = 0; i < len; i++) {
-            if(skip) {
-                skip = false;
-                continue;
-            }
+    std::wstring remove_spaces(const std::wstring &sentence) {
+        std::wstring close_id = L"";
+        std::wstring ret = L"";
+        int len = static_cast<int>(sentence.size());
 
-            if(close_id != "") {
-                if(IsDBCSLeadByte(sentence[i])) {
-                    skip = true;
-                    assert(i < len-1);
-                    string double_byte = sentence.substr(i, 2);
-
-                    ret = ret + double_byte;
-                    if(close_id.size() == 2 && double_byte == close_id) {
-                        close_id = "";
-                    }
-                }else {
-                    ret.push_back(sentence[i]);
-                    if(close_id.size() == 1 && sentence[i] == close_id.front()) {
-                        close_id = "";
-                    }
+        for (int i = 0; i < len; i++) {
+            if (!close_id.empty()) {
+                // 現在のクローズIDが設定されている場合
+                ret.push_back(sentence[i]);
+                if (sentence[i] == close_id.front()) {
+                    close_id = L"";
                 }
-            }else {
-                if(IsDBCSLeadByte(sentence[i])) {
-                    skip = true;
-                    assert(i < len-1);
-                    string double_byte = sentence.substr(i, 2);
-
-                    if(double_byte != "　") {
-                        ret = ret + double_byte;
-                    }
-                    if(double_byte == "「") {
-                        assert(close_id.size() == 0);
-                        close_id = "」";
-                    }
-                    if(double_byte == "”") {
-                        assert(close_id.size() == 0);
-                        close_id = "”";
-                    }
-                }else {
-                    if(sentence[i] != ' ') {
-                        ret.push_back(sentence[i]);
-                    }
-                    if(sentence[i] == '"') {
-                        assert(close_id.size() == 0);
-                        close_id.push_back('"');
-                    }
+            } else {
+                // 現在のクローズIDが設定されていない場合
+                if (sentence[i] != L' ' && sentence[i] != L'　') { // 半角・全角スペースを除去
+                    ret.push_back(sentence[i]);
+                }
+                if (sentence[i] == L'「') {
+                    assert(close_id.empty());
+                    close_id = L"」";
+                }
+                if (sentence[i] == L'”') {
+                    assert(close_id.empty());
+                    close_id = L"”";
+                }
+                if (sentence[i] == L'"') {
+                    assert(close_id.empty());
+                    close_id = L"\"";
                 }
             }
         }
@@ -105,99 +90,63 @@ private:
         return ret;
     }
 
-    string make_it_half_size(string sentence) {
+    std::wstring make_it_half_size(const std::wstring &sentence) {
+        std::wstring close_id = L"";
+        std::wstring ret = L"";
+        int len = static_cast<int>(sentence.size());
 
-        string close_id = "";
+        // auto isnum = [](wchar_t wc) -> bool {
+        //     return wc >= L'０' && wc <= L'９';
+        // };
 
-        function<bool(string)> isnum = [](string double_byte) -> bool {
-            if(double_byte == "０") return true;
-            if(double_byte == "１") return true;
-            if(double_byte == "２") return true;
-            if(double_byte == "３") return true;
-            if(double_byte == "４") return true;
-            if(double_byte == "５") return true;
-            if(double_byte == "６") return true;
-            if(double_byte == "７") return true;
-            if(double_byte == "８") return true;
-            if(double_byte == "９") return true;
-
-            return false;
-        };
-
-        function<void(string&, string)> apply = [&](string& str, string double_byte) -> void {
-            if(double_byte == "←") str.push_back('=');
-            else if(double_byte == "、") str.push_back(',');
-            else if(double_byte == "，") str.push_back(',');
-            else if(double_byte == "「") str.push_back('"'), close_id = "」";
-            else if(double_byte == "」") str.push_back('"');
-            else if(double_byte == "”") str.push_back('"'), close_id = "”";
-            else if(double_byte == "＋") str.push_back('+');
-            else if(double_byte == "ー") str.push_back('-');
-            else if(double_byte == "×") str.push_back('*');
-            else if(double_byte == "÷") str = str + "//";
-            else if(double_byte == "/") str.push_back('/');
-            else if(double_byte == "％") str.push_back('%');
-            else if(double_byte == "（") str.push_back('(');
-            else if(double_byte == "）") str.push_back(')');
-            else if(double_byte == "＝") str = str + "==";
-            else if(double_byte == "≠") str = str + "!=";
-            else if(double_byte == "＞") str.push_back('>');
-            else if(double_byte == "＜") str.push_back('<');
-            else if(double_byte == "≦") str = str + "<=";
-            else if(double_byte == "≧") str = str + ">=";
-            else if(double_byte == "０") str.push_back('0');
-            else if(double_byte == "１") str.push_back('1');
-            else if(double_byte == "２") str.push_back('2');
-            else if(double_byte == "３") str.push_back('3');
-            else if(double_byte == "４") str.push_back('4');
-            else if(double_byte == "５") str.push_back('5');
-            else if(double_byte == "６") str.push_back('6');
-            else if(double_byte == "７") str.push_back('7');
-            else if(double_byte == "８") str.push_back('8');
-            else if(double_byte == "９") str.push_back('9');
-            else str = str + double_byte;
-        };
-        
-        int len = sentence.size();
-        string ret = "";
-        bool skip = false;
-
-        for(int i = 0; i < len; i++) {
-            if(skip) {
-                skip = false;
-                continue;
+        auto apply = [&](std::wstring &str, wchar_t wc) -> void {
+            switch (wc) {
+                case L'←': str.push_back(L'='); break;
+                case L'、': case L'，': str.push_back(L','); break;
+                case L'「': str.push_back(L'"'); close_id = L"」"; break;
+                case L'」': str.push_back(L'"'); break;
+                case L'”': str.push_back(L'"'); close_id = L"”"; break;
+                case L'＋': str.push_back(L'+'); break;
+                case L'ー': str.push_back(L'-'); break;
+                case L'×': str.push_back(L'*'); break;
+                case L'÷': str.push_back(L'/'); break;
+                case L'％': str.push_back(L'%'); break;
+                case L'（': str.push_back(L'('); break;
+                case L'）': str.push_back(L')'); break;
+                case L'＝': str.push_back(L'='); break;
+                case L'≠': str.push_back(L'!'); break;
+                case L'＞': str.push_back(L'>'); break;
+                case L'＜': str.push_back(L'<'); break;
+                case L'≦': str.push_back(L'<'); break;
+                case L'≧': str.push_back(L'>'); break;
+                case L'０': case L'１': case L'２': case L'３': case L'４':
+                case L'５': case L'６': case L'７': case L'８': case L'９':
+                    str.push_back(wc - L'０' + L'0');
+                    break;
+                default: str.push_back(wc); break;
             }
+        };
 
-            if(close_id != "") {
-                if(IsDBCSLeadByte(sentence[i]) == 0) {
-                    if(close_id.size() == 1 && sentence[i] == close_id.front()) {
-                        close_id = "";
-                    }
-                    ret.push_back(sentence[i]);
+        for (int i = 0; i < len; i++) {
+            wchar_t wc = sentence[i];
+
+            if (!close_id.empty()) {
+                // クローズIDが設定されている場合
+                if (wc == close_id.front()) {
+                    apply(ret, wc);
+                    close_id.clear();
                 }else {
-                    skip = true;
-                    string double_byte = sentence.substr(i, 2);
-
-                    if(close_id.size() == 2 && double_byte == close_id) {
-                        close_id = "";
-                        ret.push_back('"');
-                    }else {
-                        ret = ret + double_byte;
-                    }
+                    ret.push_back(wc);
                 }
-            }else {
-                if(IsDBCSLeadByte(sentence[i]) == 0) {
-                    if(sentence[i] == '"') {
-                        assert(close_id.size() == 0);
-                        close_id.push_back(sentence[i]);
-                    }
-                    if(sentence[i] == '=') ret = ret + "==";
-                    else ret.push_back(sentence[i]);
-                }else {
-                    skip = true;
-        
-                    string double_byte = sentence.substr(i, 2);
-                    apply(ret, double_byte);
+            } else {
+                // クローズIDが設定されていない場合
+                if (wc == L'"') {
+                    close_id = L"\"";
+                    ret.push_back(wc);
+                } else if (wc == L'=') {
+                    ret += L"==";
+                } else {
+                    apply(ret, wc);
                 }
             }
         }
@@ -205,31 +154,30 @@ private:
         return ret;
     }
 
-    string index_format(string sentence) {
-        //閉区間で渡す
-        function<void(vector<string>&, int, int)> index_extend = [](vector<string>& s, int l, int r) -> void {
-            string replace = "";
-            string now = "";
+    std::wstring index_format(std::wstring sentence) {
+        // 閉区間で渡す
+        std::function<void(std::vector<std::wstring>&, int, int)> index_extend = [](std::vector<std::wstring>& s, int l, int r) -> void {
+            std::wstring replace = L"";
+            std::wstring now = L"";
             
-            int left = l+1;
-            for(int i = l+1; i < r; i++) {
-                if(s[i] == ",") {
-                    replace += "[" + now + "-1]";
-                    now = "";
-                }else {
+            int left = l + 1;
+            for (int i = l + 1; i < r; i++) {
+                if (s[i] == L",") {
+                    replace += L"[" + now + L"-1]";
+                    now = L"";
+                } else {
                     now += s[i];
                 }
             }
-            if(now.size() != 0) replace += "[" + now + "-1]";
+            if (now.size() != 0) replace += L"[" + now + L"-1]";
 
-            vector<string> new_s;
-            for(int i = 0; i < l; i++) new_s.push_back(s[i]);
+            std::vector<std::wstring> new_s;
+            for (int i = 0; i < l; i++) new_s.push_back(s[i]);
             new_s.push_back(replace);
-            while(new_s.size() < r+1) new_s.push_back("");
-            for(int i = r+1; i < s.size(); i++) new_s.push_back(s[i]);
+            while (new_s.size() < r + 1) new_s.push_back(L"");
+            for (int i = r + 1; i < s.size(); i++) new_s.push_back(s[i]);
 
             s = new_s;
-
             return;
         };
 
@@ -237,35 +185,35 @@ private:
 
         {
             bool in_bracket = false;
-            //各配列の次元数の変更
-            for(int i = 0; i < len; i++) {
-                if(in_bracket) {
-                    if(sentence[i] == '"') in_bracket = false;
-                }else {
-                    if(sentence[i] == '"') {
+            // 各配列の次元数の変更
+            for (int i = 0; i < len; i++) {
+                if (in_bracket) {
+                    if (sentence[i] == L'"') in_bracket = false;
+                } else {
+                    if (sentence[i] == L'"') {
                         in_bracket = true;
                         continue;
                     }
 
-                    for(string now : Arrays) {
-                        if(i+now.size() < len && sentence[i+now.size()] == '[' && sentence.substr(i, now.size()) == now) {
+                    for (std::wstring now : Arrays) {
+                        if (i + now.size() < len && sentence[i + now.size()] == L'[' && sentence.substr(i, now.size()) == now) {
                             //[...[...]...]
                             int tot = 1;
                             int dim = 1;
 
-                            for(int j = i+now.size()+1; j < len; j++) {
-                                if(sentence[j] == '[') tot++;
-                                if(sentence[j] == ']') tot--;
-                                if(tot == 0) {
+                            for (int j = i + now.size() + 1; j < len; j++) {
+                                if (sentence[j] == L'[') tot++;
+                                if (sentence[j] == L']') tot--;
+                                if (tot == 0) {
                                     break;
-                                }else if(tot == 1 && sentence[j] == ',') {
+                                } else if (tot == 1 && sentence[j] == L',') {
                                     dim++;
                                 }
                                 assert(tot >= 0);
                             }
 
-                            for(int k = 0; k < pc[now].size(); k++) {
-                                get<2>(Undeclared_Arrays[pc[now][k]][now][k]) = max(dim, get<2>(Undeclared_Arrays[pc[now][k]][now][k]));
+                            for (int k = 0; k < pc[now].size(); k++) {
+                                std::get<2>(Undeclared_Arrays[pc[now][k]][now][k]) = std::max(dim, std::get<2>(Undeclared_Arrays[pc[now][k]][now][k]));
                             }
                         }
                     }
@@ -273,241 +221,232 @@ private:
             }
         }
 
-        vector<string> words(len);
-        for(int i = 0; i < len; i++) words[i].push_back(sentence[i]);
+        std::vector<std::wstring> words(len);
+        for (int i = 0; i < len; i++) words[i].push_back(sentence[i]);
 
         bool in_bracket = false;
-        stack<int> st;
+        std::stack<int> st;
 
-        for(int i = 0; i < words.size(); i++) {
-            if(in_bracket) {
-                if(words[i].front() == '"') in_bracket = false;
-            }else {
-                if(words[i].front() == '"') {
+        for (int i = 0; i < words.size(); i++) {
+            if (in_bracket) {
+                if (words[i].front() == L'"') in_bracket = false;
+            } else {
+                if (words[i].front() == L'"') {
                     in_bracket = true;
                 }
-                if(words[i] == "[") {
+                if (words[i] == L"[") {
                     st.push(i);
                 }
-                if(words[i] == "]") {
+                if (words[i] == L"]") {
                     index_extend(words, st.top(), i);
                     st.pop();
                 }
             }
         }
 
-        string ret = "";
-        for(string e : words) ret += e;
+        std::wstring ret = L"";
+        for (std::wstring e : words) ret += e;
 
         return ret;
     }
 
-    ord which_order(string sentence) {
-        if(sentence == "を実行する" || sentence == "を繰り返す") {
-            return PROCESS_END;
+
+    ord which_order(std::wstring sentence) {
+        auto pref_eq = [](const std::wstring& str, const std::wstring& prefix) -> bool {
+            return str.size() >= prefix.size() && str.substr(0, prefix.size()) == prefix;
+        };
+
+        auto suff_eq = [](const std::wstring& str, const std::wstring& suffix) -> bool {
+            return str.size() >= suffix.size() && str.substr(str.size() - suffix.size()) == suffix;
+        };
+
+        if (sentence == L"を実行する" || sentence == L"を繰り返す") return PROCESS_END;
+
+        if (pref_eq(sentence, L"もし")) {
+            if (suff_eq(sentence, L"ならば"))  return IF_A;
+            return IF_B;
         }
 
-        if(sentence.size() >= 4 && sentence.substr(0, 4) == "もし") {
-            if(sentence.substr(sentence.length() - 6) == "ならば") {
-                return IF_A;
-            }else {
-                return IF_B;
-            }
-        }
-
-        if(sentence.size() >= 23 && sentence.substr(0, 23) == "を実行し,そうでなくもし") {
-            return ELIF;
-        }
-
-        if(sentence.size() >= 23 && sentence.substr(0, 23) == "を実行し,そうでなければ") {
-            return ELSE;
-        }
-
-        if(sentence.size() >= 5 && sentence.substr(sentence.length() - 5) == "の間,") {
-            return WHILE;
-        }
-
-        if(sentence.size() >= 13 && sentence.substr(sentence.length() - 13) == "増やしながら,") {
-            return FOR_INCREASING;
-        }
-
-        if(sentence.size() >= 13 && sentence.substr(sentence.length() - 13) == "減らしながら,") {
-            return FOR_DECREASING;
-        }
-
-        if(sentence.size() >= 10 && sentence.substr(sentence.length() - 10) == "を表\示する") {
-            return PRINT;
-        }
-
-        if(sentence.size() >= 6 && sentence.substr(sentence.length() - 6) == "にする") {
-            return DECLARE_ARRAY;
-        }
+        if (pref_eq(sentence, L"を実行し,そうでなくもし")) return ELIF;
+        if (pref_eq(sentence, L"を実行し,そうでなければ")) return ELSE;
+        if (suff_eq(sentence, L"の間,")) return WHILE;
+        if (suff_eq(sentence, L"増やしながら,")) return FOR_INCREASING;
+        if (suff_eq(sentence, L"減らしながら,")) return FOR_DECREASING;
+        if (suff_eq(sentence, L"を表示する")) return PRINT;
+        if (suff_eq(sentence, L"にする")) return DECLARE_ARRAY;
 
         return VARIABLE;
     }
 
     class details {
     private:
-        string unzip(vector<string> words) {
-            string ret = "";
+        std::wstring unzip(std::vector<std::wstring> words) {
+            std::wstring ret = L"";
 
-            for(int i = 0; i < words.size(); i++) {
+            for (int i = 0; i < words.size(); i++) {
                 ret = ret + words[i];
-                if(i != words.size() - 1) ret.push_back(' ');
+                if (i != words.size() - 1) ret.push_back(L' ');
             }
 
             return ret;
         }
-        string unzip_bracket(vector<string> words) {
-            vector<string> new_words;
-            for(string s : words) {
-                if(s != "" && s != " " ) new_words.push_back(s);
-            }
-            string ret = "";
 
-            for(int i = 0; i < new_words.size(); i++) {
-                if(new_words[i] == "") {
+        std::wstring unzip_bracket(std::vector<std::wstring> words) {
+            std::vector<std::wstring> new_words;
+            for (std::wstring s : words) {
+                if (s != L"" && s != L" ") new_words.push_back(s);
+            }
+            std::wstring ret = L"";
+
+            for (int i = 0; i < new_words.size(); i++) {
+                if (new_words[i] == L"") {
                     continue;
                 }
                 ret = ret + new_words[i];
-                if(i != new_words.size() - 1 && new_words[i] != "(" && new_words[i + 1] != ")") ret.push_back(' ');
+                if (i != new_words.size() - 1 && new_words[i] != L"(" && new_words[i + 1] != L")") ret.push_back(L' ');
             }
 
             return ret;
         }
 
-        string  f_conditional(string sentence) {
+        std::wstring f_conditional(std::wstring sentence) {
+            std::function<bool(int, const std::wstring&)> substr_equal = 
+                [&sentence](int i, const std::wstring& str) -> bool {
+                    return i+str.size() <= sentence.size() && sentence.substr(i, str.size()) == str;
+                };
+
             int len = (int)sentence.size();
-            vector<string> words = {"("};
+            std::vector<std::wstring> words = {L"("};
             bool in_bracket = false;
-            stack<int> brs;
+            std::stack<int> brs;
             brs.push(0);
 
-            for(int i = 0; i < len; i++) {
-                if(in_bracket) {
+            for (int i = 0; i < len; i++) {
+                if (in_bracket) {
                     words.back().push_back(sentence[i]);
-                    if(sentence[i] == '"') {
+                    if (sentence[i] == L'"') {
                         in_bracket = false;
                     }
                     continue;
-                }else {
-                    if(sentence[i] == '(') {
+                } else {
+                    if (sentence[i] == L'(') {
                         brs.push(words.size() - 1);
-                    }else if(sentence[i] == ')') {
+                    } else if (sentence[i] == L')') {
                         brs.pop();
                     }
 
-                    if(i < len - 3 && sentence.substr(i, 4) == "かつ") {
-                        if(words.back() == "") words.pop_back();
-                        words.push_back("and");
-                        i += 3;
-                        if(words.back() != "") words.push_back("");
-                    }else if(i < len - 5 && sentence.substr(i, 6) == "または") {
-                        if(words.back() == "") words.pop_back();
-                        words.push_back("or");
-                        i += 5;
-                        if(words.back() != "") words.push_back("");
-                    }else if(i < len - 5 && sentence.substr(i, 6) == "でない") {
-                        i += 5;
-                        if(words.back() == "") words.pop_back();
-                        words.back().push_back(')');
-                        string tmp = "";
+                    if (substr_equal(i, L"かつ")) {
+                        if (words.back() == L"") words.pop_back();
+                        words.push_back(L"and");
+                        i += 1;
+                        if (words.back() != L"") words.push_back(L"");
+                    } else if (substr_equal(i, L"または")) {
+                        if (words.back() == L"") words.pop_back();
+                        words.push_back(L"or");
+                        i += 2;
+                        if (words.back() != L"") words.push_back(L"");
+                    } else if (substr_equal(i, L"でない")) {
+                        i += 2;
+                        if (words.back() == L"") words.pop_back();
+                        words.back().push_back(L')');
+                        std::wstring tmp = L"";
                         tmp.push_back(words[brs.top()].front());
-                        tmp = tmp + "not(" + words[brs.top()].substr(1);
+                        tmp = tmp + L"not(" + words[brs.top()].substr(1);
                         words[brs.top()] = tmp;
-                    }else if(sentence[i] == '"') {
+                    } else if (sentence[i] == L'"') {
                         in_bracket = true;
                         words.back().push_back(sentence[i]);
-                    }else {
-                        if(i < len - 1) {
-                            string str = sentence.substr(i, 2);
-                            
-                            if(str == "<=" || str == ">=" || str == "!=" || str == "==") {
-                                words.back() = words.back() + " " + str + " ";
-                                i++;
-                            }else {
+                    } else {
+                        if (i < len - 1) {
+                            std::wstring str = sentence.substr(i, 2);
+
+                            if (str == L"<=" || str == L">=" || str == L"!=" || str == L"==") {
+                                words.back() = words.back() + L" " + str + L" ";
+                                i += 1;
+                            } else {
                                 words.back().push_back(sentence[i]);
                             }
-                        }else {
+                        } else {
                             words.back().push_back(sentence[i]);
                         }
                     }
                 }
             }
 
-            while(words.back() == "") words.pop_back();
+            while (words.back() == L"") words.pop_back();
             words.front().erase(words.front().begin());
 
-            vector<string> new_words;
-            for(string s : words) {
+            std::vector<std::wstring> new_words;
+            for (std::wstring s : words) {
                 int left = 0;
-                for(int i = 0; i < s.size(); i++) {
-                    if(s[i] == '(' || s[i] == ')') {
-                        if(i - left != 0) new_words.push_back(s.substr(left, i-left));
-                        new_words.push_back((s[i] == '('? "(" : ")"));
-                        left = i+1;
+                for (int i = 0; i < s.size(); i++) {
+                    if (s[i] == L'(' || s[i] == L')') {
+                        if (i - left != 0) new_words.push_back(s.substr(left, i - left));
+                        new_words.push_back((s[i] == L'(' ? L"(" : L")"));
+                        left = i + 1;
                     }
                 }
-                if(left != s.size()) new_words.push_back(s.substr(left));
+                if (left != s.size()) new_words.push_back(s.substr(left));
             }
 
             swap(words, new_words);
 
-            function<void(vector<string>&, int, int)> compress = [&](vector<string>& s, int l, int r) -> void {
-                l++;
-                int top = l;
-                int blank = (int)(count(s.begin() + l, s.begin() + r, ""));
-                int cnt = 0;
+            std::function<void(std::vector<std::wstring>&, int, int)> compress = 
+                [&](std::vector<std::wstring>& s, int l, int r) -> void {
+                    l++;
+                    int top = l;
+                    int blank = (int)(count(s.begin() + l, s.begin() + r, L""));
+                    int cnt = 0;
 
-                if(r - l - blank >= 5) {
-                    for(int i = l; i < r; i++) {
-                        if(s[i] == "") continue;
+                    if (r - l - blank >= 5) {
+                        for (int i = l; i < r; i++) {
+                            if (s[i] == L"") continue;
 
-                        cnt++;
-                        if(cnt > r - l - blank - 2) {
-                            break;
-                        }
-                        if(cnt < 3) continue;
+                            cnt++;
+                            if (cnt > r - l - blank - 2) {
+                                break;
+                            }
+                            if (cnt < 3) continue;
 
-                        if(s[i] != "and" && s[i] != "or") {
-                            s[i].push_back(')');
-                            s[top] = '(' + s[top];
+                            if (s[i] != L"and" && s[i] != L"or") {
+                                s[i].push_back(L')');
+                                s[top] = L"(" + s[top];
+                            }
                         }
                     }
-                }
 
-                s[l-1] = unzip_bracket(vector<string>(s.begin() + l-1, s.begin() + r+1));
-                for(int i = l; i <= r; i++) {
-                    s[i] = "";
-                }
+                    s[l - 1] = unzip_bracket(std::vector<std::wstring>(s.begin() + l - 1, s.begin() + r + 1));
+                    for (int i = l; i <= r; i++) {
+                        s[i] = L"";
+                    }
 
-                return;
-            };
+                    return;
+                };
 
-            words.insert(words.begin(), "(");
-            words.push_back(")");
-            stack<int> st;
+            words.insert(words.begin(), L"(");
+            words.push_back(L")");
+            std::stack<int> st;
             int cnt = 0;
 
-            for(int i = 0; i < words.size(); i++) {
-                if(words[i] == "(") {
+            for (int i = 0; i < words.size(); i++) {
+                if (words[i] == L"(") {
                     st.push(i);
-                }else if(words[i] == ")") {
+                } else if (words[i] == L")") {
                     int left = st.top();
                     st.pop();
-                    //(left, i)区間を圧縮
+                    // (left, i) 区間を圧縮
                     compress(words, left, i);
                 }
             }
 
-            string ret = unzip_bracket(words);
+            std::wstring ret = unzip_bracket(words);
             return ret.substr(1, ret.size() - 2);
         }
 
-        string f_PROCESS_END(string sentence) {
-            auto declare_array = [](string variable, string initial, int idx, int dim) -> void {
-                string front = "defaultdict(lambda : ";
-                string ret = variable + " = ";
+        std::wstring f_PROCESS_END(std::wstring sentence) {
+            std::function<void(std::wstring, std::wstring, int, int)> declare_array = [](std::wstring variable, std::wstring initial, int idx, int dim) -> void {
+                std::wstring front = L"defaultdict(lambda : ";
+                std::wstring ret = variable + L" = ";
 
                 for(int i = 0; i < dim; i++) ret += front;
 
@@ -522,141 +461,153 @@ private:
                 return;
             };
 
-            vector<string> vec;
+            std::vector<std::wstring> vec;
 
             for(auto e : Undeclared_Arrays[process_count]) {
                 for(auto f : e.second) {
-                    declare_array(e.first, get<0>(f), get<1>(f), get<2>(f));
+                    declare_array(e.first, std::get<0>(f), std::get<1>(f), std::get<2>(f));
                     vec.push_back(e.first);
                 }
             }
-            for(string s : vec) {
+            for(std::wstring s : vec) {
                 Undeclared_Arrays[process_count].erase(s);
                 pc.erase(s);
                 Arrays.erase(find(Arrays.begin(), Arrays.end(), s));
             }
-            return "";
+            return L"";
         }
 
-        string f_IF_A(string sentence) {
+        std::wstring f_IF_A(std::wstring sentence) {
             int len = (int)sentence.size();
-            vector<string> words;
+            std::vector<std::wstring> words;
 
-            words.push_back("if");
-            words.push_back(f_conditional(sentence.substr(4, len - 10)));
-            words.push_back(":");
+            words.push_back(L"if");
+            words.push_back(f_conditional(sentence.substr(2, len - 5))); // もしならばの部分を除く
+            words.push_back(L":");
 
             return unzip(words);
         }
 
-        string f_IF_B(string sentence) {
+        std::wstring f_IF_B(std::wstring sentence) {
             int len = (int)sentence.size();
             bool in_bracket = false;
             int seg;
-            for(int i = 0; i < len - 5; i++) {
-                if(!in_bracket && sentence.substr(i, 6) == "ならば") {
-                    seg = i + 6;
+            for (int i = 0; i < len - 2; i++) {
+                if (!in_bracket && sentence.substr(i, 3) == L"ならば") {
+                    seg = i + 3;
                     break;
                 }
-                if(sentence[i] == '"') {
+                if (sentence[i] == L'"') {
                     in_bracket = true ^ in_bracket;
                 }
             }
             
             translator next_solver;
 
-            return f_IF_A(sentence.substr(0, seg)) + "\n" + next_solver.analysis(sentence.substr(seg), true);
+            return f_IF_A(sentence.substr(0, seg)) + L"\n" + next_solver.analysis(sentence.substr(seg), true);
         }
 
-        string f_ELIF(string sentence) {
-            int len = (int)sentence.size();
-            vector<string> words;
 
-            words.push_back("elif");
-            words.push_back(f_conditional(sentence.substr(23, len - 29)));
-            words.push_back(":");
+        std::wstring f_ELIF(std::wstring sentence) {
+            int len = (int)sentence.size();
+            std::vector<std::wstring> words;
+
+            words.push_back(L"elif");
+            words.push_back(f_conditional(sentence.substr(12, len - 15))); // を実行し,そうでなくもし ... ならば　の部分を除く
+            words.push_back(L":");
 
             return unzip(words);
         }
 
-        string f_ELSE(string sentence) {
-            return "else :";
+
+        std::wstring f_ELSE(std::wstring sentence) {
+            return L"else :";
         }
 
-        string f_WHILE(string sentence) {
+        std::wstring f_WHILE(std::wstring sentence) {
             int len = (int)sentence.size();
-            return "while " + f_conditional(sentence.substr(0, len - 5)) + " :";
+            return L"while " + f_conditional(sentence.substr(0, len - 3)) + L" :"; // の間, の部分を除く
         }
 
-        string f_FOR_INCREASING(string sentence) {
+        std::wstring f_FOR_INCREASING(std::wstring sentence) {
+            std::function<bool(int, const std::wstring&)> substr_equal = 
+                [&sentence](int i, const std::wstring& str) -> bool {
+                    return i+str.size() <= sentence.size() && sentence.substr(i, str.size()) == str;
+                };
+
             int len = (int)sentence.size();
-            string variable, initial, finish, plus;
+            std::wstring variable, initial, finish, plus;
             int left = 0;
             for(int i = 0; i < len; i++) {
                 if(i <= left) continue;
 
-                if(i <= len-2 && sentence.substr(i, 2) == "を") {
+                if(sentence[i] == L'を') {
                     variable = sentence.substr(left, i-left);
+                    left = i+1;
+                }
+                if(substr_equal(i, L"から")) {
+                    initial = sentence.substr(left, i-left);
                     left = i+2;
                 }
-                if(i <= len-4 && sentence.substr(i, 4) == "から") {
-                    initial = sentence.substr(left, i-left);
-                    left = i+4;
-                }
-                if(i <= len-4 && sentence.substr(i, 4) == "まで") {
+                if(substr_equal(i, L"まで")) {
                     finish = sentence.substr(left, i-left);
-                    left = i+4;
+                    left = i+2;
                 }
-                if(i <= len-17 && sentence.substr(i, 17) == "ずつ増やしながら,") {
+                if(substr_equal(i, L"ずつ増やしながら,")) {
                     plus = sentence.substr(left, i-left);
-                    left = i+17;
+                    left = i+9;
                 }
             }
 
-            string range_expression = "range(" + initial + ", " + finish + ", " + plus + ")";
+            std::wstring range_expression = L"range(" + initial + L", " + finish + L", " + plus + L")";
 
-            return unzip({"for", variable, "in", range_expression, ":"});
+            return unzip({L"for", variable, L"in", range_expression, L":"});
         }
 
-        string f_FOR_DECREASING(string sentence) {
+        std::wstring f_FOR_DECREASING(std::wstring sentence) {
+            std::function<bool(int, const std::wstring&)> substr_equal = 
+                [&sentence](int i, const std::wstring& str) -> bool {
+                    return i+str.size() <= sentence.size() && sentence.substr(i, str.size()) == str;
+                };
+
             int len = (int)sentence.size();
-            string variable, initial, finish, plus;
+            std::wstring variable, initial, finish, plus;
             int left = 0;
             for(int i = 0; i < len; i++) {
                 if(i <= left) continue;
 
-                if(i <= len-2 && sentence.substr(i, 2) == "を") {
+                if(sentence[i] == L'を') {
                     variable = sentence.substr(left, i-left);
+                    left = i+1;
+                }
+                if(substr_equal(i, L"から")) {
+                    initial = sentence.substr(left, i-left);
                     left = i+2;
                 }
-                if(i <= len-4 && sentence.substr(i, 4) == "から") {
-                    initial = sentence.substr(left, i-left);
-                    left = i+4;
-                }
-                if(i <= len-4 && sentence.substr(i, 4) == "まで") {
+                if(substr_equal(i, L"まで")) {
                     finish = sentence.substr(left, i-left);
-                    left = i+4;
+                    left = i+2;
                 }
-                if(i <= len-17 && sentence.substr(i, 17) == "ずつ減らしながら,") {
+                if(substr_equal(i, L"ずつ減らしながら,")) {
                     plus = sentence.substr(left, i-left);
-                    left = i+17;
+                    left = i+9;
                 }
             }
 
-            string range_expression = "range(" + initial + ", " + finish + ", -(" + plus + "))";
+            std::wstring range_expression = L"range(" + initial + L", " + finish + L", -(" + plus + L"))";
 
-            return unzip({"for", variable, "in", range_expression, ":"});
+            return unzip({L"for", variable, L"in", range_expression, L":"});
         }
 
-        string f_DECLARE_ARRAY(string sentence) {
+        std::wstring f_DECLARE_ARRAY(std::wstring sentence) {
             int len = (int)sentence.size();
-            string variable;
-            string initial;
+            std::wstring variable;
+            std::wstring initial;
 
             for(int i = 0; i < len; i++) {
-                if(sentence.substr(i, 14) == "のすべての値を") {
+                if(sentence.substr(i, 7) == L"のすべての値を") {
                     variable = sentence.substr(0, i);
-                    initial = sentence.substr(i+14, len-(i+14)-6);
+                    initial = sentence.substr(i+7, len-(i+7)-3); // にする の部分を除く
                     break;
                 }
             }
@@ -664,13 +615,13 @@ private:
             Undeclared_Arrays[process_count][variable].push_back(make_tuple(initial, id, 1));
             pc[variable].push_back(process_count);
             Arrays.push_back(variable);
-            return "";
+            return L"";
         }
 
-        string f_VARIABLE(string sentence) {
+        std::wstring f_VARIABLE(std::wstring sentence) {
             int len = (int)sentence.size();
             bool in_string;
-            string ret = "";
+            std::wstring ret = L"";
 
             for(int i = 0; i < len; i++) {
                 if(in_string) {
@@ -686,7 +637,7 @@ private:
                         bracket_count--;
                     }
                     if(sentence[i] == ',' && bracket_count == 0) {
-                        ret += "\n";
+                        ret += L"\n";
                         for(int j = 0; j < process_count; j++) ret += tab;
                     }else {
                         ret.push_back(sentence[i]);
@@ -696,10 +647,10 @@ private:
             return ret;
         }
 
-        string f_PRINT(string sentence) {
-            sentence = sentence.substr(0, (int)sentence.size()-10) + "と";
+        std::wstring f_PRINT(std::wstring sentence) {
+            sentence = sentence.substr(0, (int)sentence.size()-5) + L"と";
             int len = (int)sentence.size();
-            vector<string> words;
+            std::vector<std::wstring> words;
             
             bool in_bracket = false;
             int left = 0;
@@ -715,21 +666,19 @@ private:
                     continue;
                 }
 
-                if(IsDBCSLeadByte(sentence[i])) {
-                    if(sentence.substr(i, 2) == "と") {
-                        words.push_back(sentence.substr(left, i-left) + ",");
-                        left = i+2;
-                    }
+                if(sentence[i] == L'と') {
+                    words.push_back(sentence.substr(left, i-left) + L",");
+                    left = i+1;
                 }else if(sentence[i] == '"') {
-                    in_bracket = true;
+                    in_bracket = false;
                 }
             }
             
             words.back().pop_back();
-            return "print(" + unzip(words) + ", sep='', end='\\n')";
+            return L"print(" + unzip(words) + L", sep='', end='\\n')";
         }
     public:
-        string detail_analysis(string sentence, ord order) {
+        std::wstring detail_analysis(std::wstring sentence, ord order) {
             switch(order) {
                 case PROCESS_END:
                     return f_PROCESS_END(sentence);
@@ -767,7 +716,7 @@ private:
             }
 
             assert(false);
-            return ""; 
+            return L""; 
         }
     };
 
@@ -810,7 +759,7 @@ private:
     }
 
 public:
-    string analysis(string sentence, bool ignore = false) {
+    std::wstring analysis(std::wstring sentence, bool ignore = false) {
         if(!ignore) in_sentence_cnt = 0;
         else in_sentence_cnt++;
 
@@ -846,55 +795,61 @@ public:
     }
 };
 
-int main() {
-    string input_filename = "";//入力データへのパス
-
-    vector<string> lines;
-    string line;
-
-    ifstream input_file(input_filename);
-    if(!input_file.is_open()) {
-        cerr << "Failed to open - " << input_filename << endl;
-        return 0;
+int main(int argc, char* argv[]) {
+    if (argc != 3) {
+        std::cerr << "Usage: " << argv[0] << " <input file>" << " " << " <output file>" << std::endl;
+        return 1;
     }
 
-    cout << "Start Reading the Original Text" << endl;
+    // std::wifstreamを使用してUTF-8でファイルを開く
+    std::string input_filepath = argv[1];
+    std::wifstream file(input_filepath);
 
-    while(true) {
-        getline(input_file, line);
-        if(line == "FINISH CODE") break;
+    if(!file.is_open()) {
+        std::cerr << "Error: Could not open file " << input_filepath << std::endl;
+        return 1;
+    }
+
+    file.imbue(std::locale("ja_JP.UTF-8"));  // 日本語ロケールを設定
+    
+    std::vector<std::wstring> lines;
+    std::wstring line;
+
+    std::wcerr << L"Start Reading the Original Text" << std::endl;
+
+    // ファイルから1行ずつ読み込み
+    while (getline(file, line)) {
         lines.push_back(line);
     }
 
-    lines.push_back("を実行する");
+    lines.push_back(L"を実行する");
 
-    input_file.close();
-
-    cout << "Finish Reading the Original Text" << endl;
+    std::wcerr << L"Finish Reading the Original Text" << std::endl;
 
     translator solver;
 
-    for(const string i : lines) {
-        string new_line = solver.analysis(i);
+    for(const std::wstring i : lines) {
+        std::wstring new_line = solver.analysis(i);
         output.push_back(new_line);
         id++;
     }
 
-    string output_filename = "";//出力用ファイルへのパス
-    fstream file_out;
+    std::wcerr << L"Start Writing the Translated Text" << std::endl;
 
-    file_out.open(output_filename, std::ios_base::out);
-    if(!file_out.is_open()) {
-        cerr << "Failed to open - " << output_filename << endl;
-        return 0;
-    }else {
-        cout << "Start Writing the Translated Text" << endl;
+    std::string output_filepath = argv[2];
+    std::wofstream output_file(output_filepath);
 
-        for(const auto &i : output) {
-            file_out << i << endl;
-        }
-
-        cout << "Finish Writing the Translated Text" << endl;
+    if(!output_file.is_open()) {
+        std::cerr << "Error: Could not open file " << output_filepath << std::endl;
+        return 1;
     }
+
+    output_file.imbue(std::locale("ja_JP.UTF-8"));  // 日本語ロケールを設定
+
+    for(const std::wstring i : output) {
+        output_file << i << std::endl;
+    }
+
+    std::wcerr << L"Finish Writing the Translated Text" << std::endl;
     return 0;
 }

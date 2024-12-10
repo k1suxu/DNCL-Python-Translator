@@ -1,0 +1,33 @@
+Mのすべての値を0にする
+M[1]←{20,5,15,20}
+M[2]←{10,30,10,10}
+M[3]←{10,30,5,50}
+M[4]←{10,10,15,20}
+M[5]←{40,10,20,30}
+x←1,y←1,tokuten←M[1,1]
+xMasu←5,yMasu←4
+
+Tのすべての値を0にする
+
+yを1からyMasuまで1ずつ増やしながら，
+        xを1からxMasuまで1ずつ増やしながら，
+                もしM[x-1,y]=M[x,y]ならば
+                        xTokuten←T[x-1,y]+M[x,y]×2
+                を実行し，そうでなければ
+                        xTokuten←T[x-1,y]+M[x,y]
+                を実行する
+                もしM[x,y-1]=M[x,y]ならば
+                        yTokuten←T[x,y-1]+M[x,y]×2
+                を実行し，そうでなければ
+                        yTokuten←T[x,y-1]+M[x,y]
+                を実行する
+                もしxTokuten≧yTokutenならば
+                        T[x,y]←xTokuten
+                を実行し，そうでなければ
+                        T[x,y]←yTokuten
+                を実行する
+        を繰り返す
+を繰り返す
+「最大得点の最大値は」とT[xMasu,yMasu]と「点である。」を表示する
+
+FINISH CODE
