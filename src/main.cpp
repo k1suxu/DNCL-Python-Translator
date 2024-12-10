@@ -26,34 +26,34 @@ private:
         PRINT
     };
 
-    std::string ord_to_string(ord order) {
-        std::vector<std::string> s = {
-            "PROCESS_END",
-            "IF_A",
-            "IF_B",
-            "ELIF",
-            "ELSE",
-            "WHILE",
-            "FOR_INCREASING",
-            "FOR_DECREASING",
-            "DECLARE_ARRAY",
-            "VARIABLE",
-            "PRINT"
-        };
-        return s[order];
-    }
+    // std::string ord_to_string(ord order) {
+    //     std::vector<std::string> s = {
+    //         "PROCESS_END",
+    //         "IF_A",
+    //         "IF_B",
+    //         "ELIF",
+    //         "ELSE",
+    //         "WHILE",
+    //         "FOR_INCREASING",
+    //         "FOR_DECREASING",
+    //         "DECLARE_ARRAY",
+    //         "VARIABLE",
+    //         "PRINT"
+    //     };
+    //     return s[order];
+    // }
 
-    // UTF-8からワイド文字列に変換するヘルパー関数
-    std::wstring utf8_to_wstring(const std::string &utf8) {
-        std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
-        return converter.from_bytes(utf8);
-    }
+    // // UTF-8からワイド文字列に変換するヘルパー関数
+    // std::wstring utf8_to_wstring(const std::string &utf8) {
+    //     std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
+    //     return converter.from_bytes(utf8);
+    // }
 
-    // ワイド文字列からUTF-8文字列に変換するヘルパー関数
-    std::string wstring_to_utf8(const std::wstring &wstr) {
-        std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
-        return converter.to_bytes(wstr);
-    }
+    // // ワイド文字列からUTF-8文字列に変換するヘルパー関数
+    // std::string wstring_to_utf8(const std::wstring &wstr) {
+    //     std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
+    //     return converter.to_bytes(wstr);
+    // }
 
     std::wstring remove_spaces(const std::wstring &sentence) {
         std::wstring close_id = L"";
