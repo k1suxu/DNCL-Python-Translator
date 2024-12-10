@@ -1,21 +1,19 @@
-HKosu�̂��ׂĂ̒l��0�ɂ���
-HOmosa�̂��ׂĂ̒l��0�ɂ���
-SOmosa�̂��ׂĂ̒l��0�ɂ���
-SOmosa��{2,8,1,1,6,6,1,2}
-syohinsu��8
-hakosu��0
-i��1����syohinsu�܂�1�����₵�Ȃ���C
-        j��hakosu+1,k��1
-        k��hakosu�̊ԁC
-            ����HOmosa[k]+SOmosa[i]��9����HKosu[k]<4����HOmosa[j]<HOmosa[k]�Ȃ��
-                    j��k
-            �����s����
-            k��k+1
-        ���J��Ԃ�
-        i�Ɓu�Ԃ̏��i���v��j�Ɓu�Ԃ̔��ɓ����v��\������
-        HOmosa[j]��HOmosa[j]+SOmosa[i]�CHKosu[j]��HKosu[j]+1
-        ����j>hakosu�Ȃ��hakosu��j
-���J��Ԃ�
-�u�K�v�Ȕ��̐��́v��hakosu�Ɓu�ł���v��\������
-
-FINISH CODE
+HKosuのすべての値を0にする
+HOmosaのすべての値を0にする
+SOmosaのすべての値を0にする
+SOmosa←{2,8,1,1,6,6,1,2}
+syohinsu←8
+hakosu←0
+iを1からsyohinsuまで1ずつ増やしながら，
+        j←hakosu+1,k←1
+        k≦hakosuの間，
+            もしHOmosa[k]+SOmosa[i]≦9かつHKosu[k]<4かつHOmosa[j]<HOmosa[k]ならば
+                    j←k
+            を実行する
+            k←k+1
+        を繰り返す
+        iと「番の商品を」とjと「番の箱に入れる」を表示する
+        HOmosa[j]←HOmosa[j]+SOmosa[i]，HKosu[j]←HKosu[j]+1
+        もしj>hakosuならばhakosu←j
+を繰り返す
+「必要な箱の数は」とhakosuと「である」を表示する

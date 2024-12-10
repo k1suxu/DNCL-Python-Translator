@@ -1,6 +1,6 @@
-tyotensu©8
-Hen‚Ì‚·‚×‚Ä‚Ì’l‚ğ"NONE"‚É‚·‚é
-Hen©{
+tyotensuâ†8
+Henã®ã™ã¹ã¦ã®å€¤ã‚’"NONE"ã«ã™ã‚‹
+Henâ†{
     {"-","A","B","-","A","-","A","B"},
     {"-","-","-","C","A","-","A","C"},
     {"-","-","-","E","-","E","E","B"},
@@ -9,25 +9,23 @@ Hen©{
     {"-","-","-","-","-","-","E","D"},
     {"-","-","-","-","-","-","-","F"}
 }
-Siten‚Ì‚·‚×‚Ä‚Ì’l‚ğ0‚É‚·‚é
-Syuten‚Ì‚·‚×‚Ä‚Ì’l‚ğ0‚É‚·‚é
-Senbun‚Ì‚·‚×‚Ä‚Ì’l‚ğ0‚É‚·‚é
-hensosu©0
-i‚ğ1‚©‚çtyotensu-1‚Ü‚Å1‚¸‚Â‘‚â‚µ‚È‚ª‚çC
-        j‚ği+1‚©‚çtyotensu‚Ü‚Å1‚¸‚Â‘‚â‚µ‚È‚ª‚çC
-                ‚à‚µHen[i,j]‚"-"‚È‚ç‚Î
-                        hensosu©hensosu+1
-                        Siten[hensosu]©i
-                        Syuten[hensosu]©j
-                        Senbun[hensosu]©Hen[i,j]
-                ‚ğÀs‚·‚é
-        ‚ğŒJ‚è•Ô‚·
-‚ğŒJ‚è•Ô‚·
+Sitenã®ã™ã¹ã¦ã®å€¤ã‚’0ã«ã™ã‚‹
+Syutenã®ã™ã¹ã¦ã®å€¤ã‚’0ã«ã™ã‚‹
+Senbunã®ã™ã¹ã¦ã®å€¤ã‚’0ã«ã™ã‚‹
+hensosuâ†0
+iã‚’1ã‹ã‚‰tyotensu-1ã¾ã§1ãšã¤å¢—ã‚„ã—ãªãŒã‚‰ï¼Œ
+        jã‚’i+1ã‹ã‚‰tyotensuã¾ã§1ãšã¤å¢—ã‚„ã—ãªãŒã‚‰ï¼Œ
+                ã‚‚ã—Hen[i,j]â‰ "-"ãªã‚‰ã°
+                        hensosuâ†hensosu+1
+                        Siten[hensosu]â†i
+                        Syuten[hensosu]â†j
+                        Senbun[hensosu]â†Hen[i,j]
+                ã‚’å®Ÿè¡Œã™ã‚‹
+        ã‚’ç¹°ã‚Šè¿”ã™
+ã‚’ç¹°ã‚Šè¿”ã™
 
 
-i‚ğ1‚©‚çhensosu‚Ü‚Å1‚¸‚Â‘‚â‚µ‚È‚ª‚çA
-    disp©""+Siten[i]+":"+Syuten[i]+"="+Senbun[i]
-    disp‚ğ•\¦‚·‚é
-‚ğŒJ‚è•Ô‚·
-
-FINISH CODE
+iã‚’1ã‹ã‚‰hensosuã¾ã§1ãšã¤å¢—ã‚„ã—ãªãŒã‚‰ã€
+    dispâ†""+Siten[i]+":"+Syuten[i]+"="+Senbun[i]
+    dispã‚’è¡¨ç¤ºã™ã‚‹
+ã‚’ç¹°ã‚Šè¿”ã™

@@ -1,25 +1,23 @@
-Suji‚Ì‚·‚×‚Ä‚Ì’l‚ğ"NONE"‚É‚·‚é
-KuraiMoji‚Ì‚·‚×‚Ä‚Ì’l‚ğ"NONE"‚É‚·‚é
-Suji[1]©uv,Suji[2]©u“ñv,Suji[3]©uOv
-Suji[4]©ulv,Suji[5]©uŒÜv,Suji[6]©u˜Zv
-Suji[7]©uµv,Suji[8]©u”ªv,Suji[9]©u‹ãv
-KuraiMoji[4]©uçv, KuraiMoji[3]©u•Sv
-KuraiMoji[2]©u\v, KuraiMoji[1]©uv
+Sujiã®ã™ã¹ã¦ã®å€¤ã‚’"NONE"ã«ã™ã‚‹
+KuraiMojiã®ã™ã¹ã¦ã®å€¤ã‚’"NONE"ã«ã™ã‚‹
+Suji[1]â†ã€Œã€,Suji[2]â†ã€ŒäºŒã€,Suji[3]â†ã€Œä¸‰ã€
+Suji[4]â†ã€Œå››ã€,Suji[5]â†ã€Œäº”ã€,Suji[6]â†ã€Œå…­ã€
+Suji[7]â†ã€Œä¸ƒã€,Suji[8]â†ã€Œå…«ã€,Suji[9]â†ã€Œä¹ã€
+KuraiMoji[4]â†ã€Œåƒã€, KuraiMoji[3]â†ã€Œç™¾ã€
+KuraiMoji[2]â†ã€Œåã€, KuraiMoji[1]â†ã€Œã€
 
-kurai©1000
-n©231
-keta‚ğ4‚©‚ç1‚Ü‚Å1‚¸‚ÂŒ¸‚ç‚µ‚È‚ª‚çA
-    d©n€kurai
-    ‚à‚µd‚0‚È‚ç‚Î
-        ‚à‚µd=1‚©‚Âketa=1‚È‚ç‚Î
-            uˆêv‚ğ•\¦‚·‚é
-        ‚ğÀs‚µA‚»‚¤‚Å‚È‚¯‚ê‚Î
-            Suji[d]‚ğ•\¦‚·‚é
-            KuraiMoji[keta]‚ğ•\¦‚·‚é
-        ‚ğÀs‚·‚é
-    ‚ğÀs‚·‚é
-    n©n%kurai
-    kurai©kurai€10
-‚ğŒJ‚è•Ô‚·
-
-FINISH CODE
+kuraiâ†1000
+nâ†231
+ketaã‚’4ã‹ã‚‰1ã¾ã§1ãšã¤æ¸›ã‚‰ã—ãªãŒã‚‰ã€
+    dâ†nÃ·kurai
+    ã‚‚ã—dâ‰ 0ãªã‚‰ã°
+        ã‚‚ã—d=1ã‹ã¤keta=1ãªã‚‰ã°
+            ã€Œä¸€ã€ã‚’è¡¨ç¤ºã™ã‚‹
+        ã‚’å®Ÿè¡Œã—ã€ãã†ã§ãªã‘ã‚Œã°
+            Suji[d]ã‚’è¡¨ç¤ºã™ã‚‹
+            KuraiMoji[keta]ã‚’è¡¨ç¤ºã™ã‚‹
+        ã‚’å®Ÿè¡Œã™ã‚‹
+    ã‚’å®Ÿè¡Œã™ã‚‹
+    nâ†n%kurai
+    kuraiâ†kuraiÃ·10
+ã‚’ç¹°ã‚Šè¿”ã™

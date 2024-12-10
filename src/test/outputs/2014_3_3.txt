@@ -1,0 +1,51 @@
+#coding: shift_jis
+
+#Template Zone
+from collections import defaultdict
+
+def range(start :float, end :float, inc :float) -> list:
+    list = []
+    if inc > 0:
+        while start <= end:
+            list.append(start)
+            start = start + inc
+    else:
+        while start >= end:
+            list.append(start)
+            start = start + inc
+    return list
+
+#Your Translated Code Zone
+
+
+
+Gakuhuのすべての値を"NONE"にする
+Patanのすべての値を"NONE"にする
+Kakegoeのすべての値を"NONE"にする
+Gakuhu={"ダ"
+"ダ"
+"ダ"
+"ダ"
+"ダ"
+"ダ"
+"ン"
+"終"]
+Patan={"ダ","ダ","声"]
+yameru=0,i=1
+yameru=0の間,
+j=1
+Gakuhu[i+j-1-1]==Patan[j-1]の間,
+j=j+1
+を繰り返す
+if Gakuhu[i+j-1-1] == "終" :
+    yameru=1
+if Patan[j-1] == "声" :
+    
+Kakegoe[i+j-1-1]="▽"
+i=i+j-1
+else :
+i=i+1
+を実行する
+を繰り返す
+Kakegoeを表示する
+

@@ -1,23 +1,21 @@
-Gakuhu‚Ì‚·‚×‚Ä‚Ì’l‚ğ"NONE"‚É‚·‚é
-Patan‚Ì‚·‚×‚Ä‚Ì’l‚ğ"NONE"‚É‚·‚é
-Kakegoe‚Ì‚·‚×‚Ä‚Ì’l‚ğ"NONE"‚É‚·‚é
-Gakuhu©{"ƒ_","ƒJ","ƒ“","ƒR","ƒh","I"}
-Patan©{"ƒJ","ƒ“","ƒR","º"}
-yameru©0Ci©1
-yameru0‚ÌŠÔC
-        itti©0,j©1
-        Patan[j]‚uºv‚ÌŠÔC
-                ‚à‚µGakuhu[i+j-1]=Patan[j]‚È‚ç‚Î
-                        itti©itti+1
-                ‚ğÀs‚·‚é
-                j©j+1
-        ‚ğŒJ‚è•Ô‚·
-        ‚à‚µGakuhu[i+j-1]=uIv‚È‚ç‚Îyameru©1
-        ‚à‚µitti=j-1‚È‚ç‚Î
-                Kakegoe[i+j-1]©u¤v
-        ‚ğÀs‚·‚é
-        i©i+1
-‚ğŒJ‚è•Ô‚·
-Kakegoe‚ğ•\¦‚·‚é
-
-FINISH CODE
+Gakuhuã®ã™ã¹ã¦ã®å€¤ã‚’"NONE"ã«ã™ã‚‹
+Patanã®ã™ã¹ã¦ã®å€¤ã‚’"NONE"ã«ã™ã‚‹
+Kakegoeã®ã™ã¹ã¦ã®å€¤ã‚’"NONE"ã«ã™ã‚‹
+Gakuhuâ†{"ãƒ€","ã‚«","ãƒ³","ã‚³","ãƒ‰","çµ‚"}
+Patanâ†{"ã‚«","ãƒ³","ã‚³","å£°"}
+yameruâ†0ï¼Œiâ†1
+yameruï¼0ã®é–“ï¼Œ
+        ittiâ†0,jâ†1
+        Patan[j]â‰ ã€Œå£°ã€ã®é–“ï¼Œ
+                ã‚‚ã—Gakuhu[i+j-1]=Patan[j]ãªã‚‰ã°
+                        ittiâ†itti+1
+                ã‚’å®Ÿè¡Œã™ã‚‹
+                jâ†j+1
+        ã‚’ç¹°ã‚Šè¿”ã™
+        ã‚‚ã—Gakuhu[i+j-1]=ã€Œçµ‚ã€ãªã‚‰ã°yameruâ†1
+        ã‚‚ã—itti=j-1ãªã‚‰ã°
+                Kakegoe[i+j-1]â†ã€Œâ–½ã€
+        ã‚’å®Ÿè¡Œã™ã‚‹
+        iâ†i+1
+ã‚’ç¹°ã‚Šè¿”ã™
+Kakegoeã‚’è¡¨ç¤ºã™ã‚‹

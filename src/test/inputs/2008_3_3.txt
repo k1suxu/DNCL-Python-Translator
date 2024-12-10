@@ -1,31 +1,29 @@
-Namae‚Ì‚·‚×‚Ä‚Ì’l‚ğ"NONE"‚É‚·‚é
-Tokuten‚Ì‚·‚×‚Ä‚Ì’l‚ğ0‚É‚·‚é
-Namae[1]©u‚Í‚é‚±v, Tokuten[1]©73
-Namae[2]©u‚È‚Â‚¨v, Tokuten[2]©77
-Namae[3]©u‚ ‚«‚æv, Tokuten[3]©81
-Namae[4]©u‚Ó‚ä‚«v, Tokuten[4]©68
+Namaeã®ã™ã¹ã¦ã®å€¤ã‚’"NONE"ã«ã™ã‚‹
+Tokutenã®ã™ã¹ã¦ã®å€¤ã‚’0ã«ã™ã‚‹
+Namae[1]â†ã€Œã¯ã‚‹ã“ã€, Tokuten[1]â†73
+Namae[2]â†ã€Œãªã¤ãŠã€, Tokuten[2]â†77
+Namae[3]â†ã€Œã‚ãã‚ˆã€, Tokuten[3]â†81
+Namae[4]â†ã€Œãµã‚†ãã€, Tokuten[4]â†68
 
-j©4-1
-saigo©10
-saigo„‚P‚ÌŠÔA
-    i‚ğ1‚©‚çj‚Ü‚Å1‚¸‚Â‘‚â‚µ‚È‚ª‚çA
-        ‚à‚µTokuten[i]ƒTokuten[i+1]‚È‚ç‚Î
-            n © Namae[i]
-            Namae[i]©Namae[i+1]
-            Namae[i+1]©n
-            t©Tokuten[i]
-            Tokuten[i]©Tokuten[i+1]
-            Tokuten[i+1]©t
-            saigo©i
-        ‚ğÀs‚·‚é
-    ‚ğŒJ‚è•Ô‚·
-    j©saigo-1
-‚ğŒJ‚è•Ô‚·
+jâ†4-1
+saigoâ†10
+saigoï¼ï¼‘ã®é–“ã€
+    iã‚’1ã‹ã‚‰jã¾ã§1ãšã¤å¢—ã‚„ã—ãªãŒã‚‰ã€
+        ã‚‚ã—Tokuten[i]ï¼œTokuten[i+1]ãªã‚‰ã°
+            n â† Namae[i]
+            Namae[i]â†Namae[i+1]
+            Namae[i+1]â†n
+            tâ†Tokuten[i]
+            Tokuten[i]â†Tokuten[i+1]
+            Tokuten[i+1]â†t
+            saigoâ†i
+        ã‚’å®Ÿè¡Œã™ã‚‹
+    ã‚’ç¹°ã‚Šè¿”ã™
+    jâ†saigo-1
+ã‚’ç¹°ã‚Šè¿”ã™
 
 
-i‚ğ1‚©‚ç4‚Ü‚Å1‚¸‚Â‘‚â‚µ‚È‚ª‚çA
-    txt©Namae[i]+":"+Tokuten[i]
-    txt‚ğ•\¦‚·‚é
-‚ğŒJ‚è•Ô‚·
-
-FINISH CODE
+iã‚’1ã‹ã‚‰4ã¾ã§1ãšã¤å¢—ã‚„ã—ãªãŒã‚‰ã€
+    txtâ†Namae[i]+":"+Tokuten[i]
+    txtã‚’è¡¨ç¤ºã™ã‚‹
+ã‚’ç¹°ã‚Šè¿”ã™

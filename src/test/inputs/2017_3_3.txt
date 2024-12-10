@@ -1,6 +1,6 @@
-tyotensu©8
-Hen‚Ì‚·‚×‚Ä‚Ì’l‚ğ"NONE"‚É‚·‚é
-Hen©{
+tyotensuâ†8
+Henã®ã™ã¹ã¦ã®å€¤ã‚’"NONE"ã«ã™ã‚‹
+Henâ†{
     {"-","A","B","-","A","-","A","B"},
     {"-","-","-","C","A","-","A","C"},
     {"-","-","-","E","-","E","E","B"},
@@ -9,31 +9,29 @@ Hen©{
     {"-","-","-","-","-","-","E","D"},
     {"-","-","-","-","-","-","-","F"}
 }
-Siten‚Ì‚·‚×‚Ä‚Ì’l‚ğ0‚É‚·‚é
-Syuten‚Ì‚·‚×‚Ä‚Ì’l‚ğ0‚É‚·‚é
-Senbun‚Ì‚·‚×‚Ä‚Ì’l‚ğ0‚É‚·‚é
-hensosu©0
+Sitenã®ã™ã¹ã¦ã®å€¤ã‚’0ã«ã™ã‚‹
+Syutenã®ã™ã¹ã¦ã®å€¤ã‚’0ã«ã™ã‚‹
+Senbunã®ã™ã¹ã¦ã®å€¤ã‚’0ã«ã™ã‚‹
+hensosuâ†0
 
-i‚ğ1‚©‚çtyotensu-1‚Ü‚Å1‚¸‚Â‘‚â‚µ‚È‚ª‚çC
-        j‚ği+1‚©‚çtyotensu‚Ü‚Å1‚¸‚Â‘‚â‚µ‚È‚ª‚çC
-                ‚à‚µHen[i,j]‚"-"‚È‚ç‚Î
-                        hensosu©hensosu+1
-                        Siten[hensosu]©i
-                        Syuten[hensosu]©j
-                        Senbun[hensosu]©Hen[i,j]
-                ‚ğÀs‚·‚é
-        ‚ğŒJ‚è•Ô‚·
-‚ğŒJ‚è•Ô‚·
-kotae©0
-x‚ğ1‚©‚çhensosu-2‚Ü‚Å1‚¸‚Â‘‚â‚µ‚È‚ª‚çC
-        y©x+1
-        Siten[x]=Siten[y]‚ÌŠÔC
-                ‚à‚µSenbun[x]‚Senbun[y]‚©‚ÂHen[Syuten[x],Syuten[y]]‚"-"‚È‚ç‚Î
-                        kotae©kotae+1
-                ‚ğÀs‚·‚é
-                y©y+1
-        ‚ğŒJ‚è•Ô‚·
-‚ğŒJ‚è•Ô‚·
-uOŠpŒ`‚ÌŒÂ”‚Ív‚Ækotae‚ÆuŒÂ‚Å‚ ‚év‚ğ•\¦‚·‚é
-
-FINISH CODE
+iã‚’1ã‹ã‚‰tyotensu-1ã¾ã§1ãšã¤å¢—ã‚„ã—ãªãŒã‚‰ï¼Œ
+        jã‚’i+1ã‹ã‚‰tyotensuã¾ã§1ãšã¤å¢—ã‚„ã—ãªãŒã‚‰ï¼Œ
+                ã‚‚ã—Hen[i,j]â‰ "-"ãªã‚‰ã°
+                        hensosuâ†hensosu+1
+                        Siten[hensosu]â†i
+                        Syuten[hensosu]â†j
+                        Senbun[hensosu]â†Hen[i,j]
+                ã‚’å®Ÿè¡Œã™ã‚‹
+        ã‚’ç¹°ã‚Šè¿”ã™
+ã‚’ç¹°ã‚Šè¿”ã™
+kotaeâ†0
+xã‚’1ã‹ã‚‰hensosu-2ã¾ã§1ãšã¤å¢—ã‚„ã—ãªãŒã‚‰ï¼Œ
+        yâ†x+1
+        Siten[x]=Siten[y]ã®é–“ï¼Œ
+                ã‚‚ã—Senbun[x]â‰ Senbun[y]ã‹ã¤Hen[Syuten[x],Syuten[y]]â‰ "-"ãªã‚‰ã°
+                        kotaeâ†kotae+1
+                ã‚’å®Ÿè¡Œã™ã‚‹
+                yâ†y+1
+        ã‚’ç¹°ã‚Šè¿”ã™
+ã‚’ç¹°ã‚Šè¿”ã™
+ã€Œä¸‰è§’å½¢ã®å€‹æ•°ã¯ã€ã¨kotaeã¨ã€Œå€‹ã§ã‚ã‚‹ã€ã‚’è¡¨ç¤ºã™ã‚‹

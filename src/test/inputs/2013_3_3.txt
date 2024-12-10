@@ -1,18 +1,16 @@
-Rieki‚Ì‚·‚×‚Ä‚Ì’l‚ğ0‚É‚·‚é
-Rieki©{1,-3,2,10,-4,12,8,-4}
-saidaiRieki©0CsoRieki©0Ci©1
-kaisi©0, syuryo©0
-j‚ğ1‚©‚ç8‚Ü‚Å1‚¸‚Â‘‚â‚µ‚È‚ª‚çC
-        soRieki©soRieki+Rieki[j]
-        ‚à‚µsoRieki>saidaiRieki‚È‚ç‚Î
-                saidaiRieki©soRieki
-                kaisi©iCsyuryo©j
-        ‚ğÀs‚µC‚»‚¤‚Å‚È‚­‚à‚µsoRieki<0‚È‚ç‚Î
-                soRieki©0Ci©j+1
-        ‚ğÀs‚·‚é
-‚ğŒJ‚è•Ô‚·
-uŠJnŠÔ‘Ñ‚Ív‚Ækaisi‚Æu‚Æ‚µ,v‚ğ•\¦‚·‚é
-uI—¹ŠÔ‘Ñ‚Ív‚Æsyuryo‚Æu‚Æ‚·‚éBv‚ğ•\¦‚·‚é
-u‘—˜‰v‚ÌÅ‘å’l‚Ív‚ÆsaidaiRieki‚Æuç‰~‚Å‚ ‚éBv‚ğ•\¦‚·‚é
-
-FINISH CODE
+Riekiã®ã™ã¹ã¦ã®å€¤ã‚’0ã«ã™ã‚‹
+Riekiâ†{1,-3,2,10,-4,12,8,-4}
+saidaiRiekiâ†0ï¼ŒsoRiekiâ†0ï¼Œiâ†1
+kaisiâ†0, syuryoâ†0
+jã‚’1ã‹ã‚‰8ã¾ã§1ãšã¤å¢—ã‚„ã—ãªãŒã‚‰ï¼Œ
+        soRiekiâ†soRieki+Rieki[j]
+        ã‚‚ã—soRieki>saidaiRiekiãªã‚‰ã°
+                saidaiRiekiâ†soRieki
+                kaisiâ†iï¼Œsyuryoâ†j
+        ã‚’å®Ÿè¡Œã—ï¼Œãã†ã§ãªãã‚‚ã—soRieki<0ãªã‚‰ã°
+                soRiekiâ†0ï¼Œiâ†j+1
+        ã‚’å®Ÿè¡Œã™ã‚‹
+ã‚’ç¹°ã‚Šè¿”ã™
+ã€Œé–‹å§‹æ™‚é–“å¸¯ã¯ã€ã¨kaisiã¨ã€Œã¨ã—,ã€ã‚’è¡¨ç¤ºã™ã‚‹
+ã€Œçµ‚äº†æ™‚é–“å¸¯ã¯ã€ã¨syuryoã¨ã€Œã¨ã™ã‚‹ã€‚ã€ã‚’è¡¨ç¤ºã™ã‚‹
+ã€Œç·åˆ©ç›Šã®æœ€å¤§å€¤ã¯ã€ã¨saidaiRiekiã¨ã€Œåƒå††ã§ã‚ã‚‹ã€‚ã€ã‚’è¡¨ç¤ºã™ã‚‹

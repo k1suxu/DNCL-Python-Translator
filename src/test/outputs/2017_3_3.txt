@@ -1,0 +1,68 @@
+#coding: shift_jis
+
+#Template Zone
+from collections import defaultdict
+
+def range(start :float, end :float, inc :float) -> list:
+    list = []
+    if inc > 0:
+        while start <= end:
+            list.append(start)
+            start = start + inc
+    else:
+        while start >= end:
+            list.append(start)
+            start = start + inc
+    return list
+
+#Your Translated Code Zone
+
+
+
+tyotensu=8
+Henのすべての値を"NONE"にする
+Hen={
+{"-"
+"A"
+"B"
+"-"
+"A"
+"-"
+"A"
+"B"],
+{"-","-","-","C","A","-","A","C"],
+{"-","-","-","E","-","E","E","B"],
+{"-","-","-","-","-","E","E","C"],
+{"-","-","-","-","-","D","A","D"],
+{"-","-","-","-","-","-","E","D"],
+{"-","-","-","-","-","-","-","F"]
+}
+Sitenのすべての値を0にする
+Syutenのすべての値を0にする
+Senbunのすべての値を0にする
+hensosu=0
+
+iを1からtyotensu-1まで1ずつ増やしながら,
+jをi+1からtyotensuまで1ずつ増やしながら,
+if Hen[i-1][j-1]!"-" :
+    
+hensosu=hensosu+1
+Siten[hensosu-1]=i
+Syuten[hensosu-1]=j
+Senbun[hensosu-1]=Hen[i-1][j-1]
+を実行する
+を繰り返す
+を繰り返す
+kotae=0
+xを1からhensosu-2まで1ずつ増やしながら,
+y=x+1
+Siten[x-1]==Siten[y-1]の間,
+if Senbun[x-1]!Senbun[y-1] and Hen[Syuten[x-1]-1][Syuten[y-1]-1]!"-" :
+    
+kotae=kotae+1
+を実行する
+y=y+1
+を繰り返す
+を繰り返す
+"三角形の個数は"とkotaeと"個である"を表示する
+

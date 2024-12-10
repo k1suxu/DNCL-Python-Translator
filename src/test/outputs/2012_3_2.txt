@@ -1,0 +1,36 @@
+#coding: shift_jis
+
+#Template Zone
+from collections import defaultdict
+
+def range(start :float, end :float, inc :float) -> list:
+    list = []
+    if inc > 0:
+        while start <= end:
+            list.append(start)
+            start = start + inc
+    else:
+        while start >= end:
+            list.append(start)
+            start = start + inc
+    return list
+
+#Your Translated Code Zone
+
+
+
+i=0,
+x=713
+Kekka1のすべての値を0にする
+x>0の間,
+Kekka1[i-1]=x%2
+x=x/2
+i=i+1
+を繰り返す
+jを9から0まで1ずつ減らしながら,
+if Kekka1[j-1] == 1 :
+    
+jと"番の分銅を右の皿にのせる。"を表示する
+を実行する
+を繰り返す
+
