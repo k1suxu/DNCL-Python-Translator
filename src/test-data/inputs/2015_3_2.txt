@@ -1,0 +1,25 @@
+Mのすべての値を0にする
+M[1]←{20,5,15,20}
+M[2]←{10,30,10,10}
+M[3]←{10,30,5,50}
+M[4]←{10,10,15,20}
+M[5]←{40,10,20,30}
+
+x←1,y←1,tokuten←M[1,1]
+xMasu←5,yMasu←4
+x<xMasuまたはy<yMasuの間，
+        もしM[x+1,y]=M[x,y]かつM[x+1,y]×2≧M[x,y+1]ならば
+                x←x+1
+                tokuten←tokuten+M[x,y]×2
+        を実行し，そうでなくもしM[x,y+1]=M[x,y]かつM[x+1,y]<M[x,y+1]×2ならば
+                y←y+1
+                tokuten←tokuten+M[x,y]×2
+        を実行し,そうでなくもしM[x+1,y]≧M[x,y+1]ならば
+                x←x+1
+                tokuten←tokuten+M[x,y]
+        を実行し，そうでなければ
+                y←y+1
+                tokuten←tokuten+M[x,y]
+        を実行する
+を繰り返す
+「最終得点は」とtokutenと「点である。」を表示する
