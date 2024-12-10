@@ -26,22 +26,22 @@ private:
         PRINT
     };
 
-    // std::string ord_to_string(ord order) {
-    //     std::vector<std::string> s = {
-    //         "PROCESS_END",
-    //         "IF_A",
-    //         "IF_B",
-    //         "ELIF",
-    //         "ELSE",
-    //         "WHILE",
-    //         "FOR_INCREASING",
-    //         "FOR_DECREASING",
-    //         "DECLARE_ARRAY",
-    //         "VARIABLE",
-    //         "PRINT"
-    //     };
-    //     return s[order];
-    // }
+    std::string ord_to_string(ord order) {
+        std::vector<std::string> s = {
+            "PROCESS_END",
+            "IF_A",
+            "IF_B",
+            "ELIF",
+            "ELSE",
+            "WHILE",
+            "FOR_INCREASING",
+            "FOR_DECREASING",
+            "DECLARE_ARRAY",
+            "VARIABLE",
+            "PRINT"
+        };
+        return s[order];
+    }
 
     // UTF-8からワイド文字列に変換するヘルパー関数
     std::wstring utf8_to_wstring(const std::string &utf8) {
@@ -775,7 +775,7 @@ public:
 
         //divide
         ord order = which_order(sentence);
-        
+
         //detail
         sentence = dt.detail_analysis(sentence, order);
 
@@ -803,53 +803,41 @@ int main(int argc, char* argv[]) {
 
     // std::wifstreamを使用してUTF-8でファイルを開く
     std::string input_filepath = argv[1];
-    std::wifstream file(input_filepath);
-
-    if(!file.is_open()) {
-        std::cerr << "Error: Could not open file " << input_filepath << std::endl;
+    std::wifstream input_file(input_filepath);
+    if(!input_file.is_open()) {
+        std::cerr << "Error: Could not open input_file " << input_filepath << std::endl;
         return 1;
     }
+    input_file.imbue(std::locale("ja_JP.UTF-8"));  // 日本語ロケールを設定
 
-    file.imbue(std::locale("ja_JP.UTF-8"));  // 日本語ロケールを設定
-    
     std::vector<std::wstring> lines;
     std::wstring line;
-
-    std::wcerr << L"Start Reading the Original Text" << std::endl;
-
-    // ファイルから1行ずつ読み込み
-    while (getline(file, line)) {
-        lines.push_back(line);
-    }
-
+    std::cerr << "Start Reading the Original Text" << std::endl;
+    while (getline(input_file, line)) lines.push_back(line);
     lines.push_back(L"を実行する");
+    input_file.close();
 
-    std::wcerr << L"Finish Reading the Original Text" << std::endl;
+    std::cerr << "Finish Reading the Original Text" << std::endl;
 
     translator solver;
-
     for(const std::wstring i : lines) {
         std::wstring new_line = solver.analysis(i);
         output.push_back(new_line);
         id++;
     }
 
-    std::wcerr << L"Start Writing the Translated Text" << std::endl;
+    std::cerr << "Start Writing the Translated Text" << std::endl;
 
     std::string output_filepath = argv[2];
     std::wofstream output_file(output_filepath);
-
     if(!output_file.is_open()) {
-        std::cerr << "Error: Could not open file " << output_filepath << std::endl;
+        std::cerr << "Error: Could not open output_file " << output_filepath << std::endl;
         return 1;
     }
-
     output_file.imbue(std::locale("ja_JP.UTF-8"));  // 日本語ロケールを設定
+    for(const std::wstring i : output) output_file << i << std::endl;
+    output_file.close();
 
-    for(const std::wstring i : output) {
-        output_file << i << std::endl;
-    }
-
-    std::wcerr << L"Finish Writing the Translated Text" << std::endl;
+    std::cerr << "Finish Writing the Translated Text" << std::endl;
     return 0;
 }
