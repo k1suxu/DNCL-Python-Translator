@@ -620,7 +620,7 @@ private:
 
         std::wstring f_VARIABLE(std::wstring sentence) {
             int len = (int)sentence.size();
-            bool in_string;
+            bool in_string = false;
             std::wstring ret = L"";
 
             for(int i = 0; i < len; i++) {
