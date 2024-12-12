@@ -48,8 +48,6 @@ To achieve equivalent output to `expected-run-output.txt`, you must make adjustm
 | 2008_3_3 line 52 | Tokuten[i-1]        | str(Tokuten[i-1])    |
 | 2011_3_2 line 60 | Tenjun[num-1]       | str(Tenjun[num-1])   |
 | 2011_3_2 line 60 | Tenban[num-1]       | str(Tenban[num-1])   |
-| 2018_3_2 lines 54, 56, 59 | end='\n' | end=''               |
-| 2018_3_3 lines 55, 57, 60 | end='\n' | end=''               |
 
 <br>
 *Note*: The programs `2014_3_2`, `2014_3_3`, and `2015_3_3` exhibit unexpected behavior and produce different execution results.<br>
@@ -94,8 +92,6 @@ numberが数値型、textが文字列型の変数であるとき、"number+text"
 |2008_3_3 52行目|Tokuten[i-1]|str(Touten[i-1])|
 |2011_3_2 60行目|Tenjun[num-1]|str(Tenjun[num-1])|
 |2011_3_2 60行目|Tenban[num-1]|str(Tenban[num-1])|
-|2018_3_2 54,56,59行目|end='\n'|end=''|
-|2018_3_3 55,57,60行目|end='\n'|end=''|
 
 <br>
 *注意* 2014_3_2,2014_3_3,2015_3_3は想定していない挙動を含むコードのため実行結果が異なります。<br>
