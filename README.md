@@ -1,15 +1,14 @@
 
 # DNCL-Python-Translator
 This tool translates code written in DNCL (2011) into Python.<br>
-DNCL (2011) のコードを Python コードに翻訳します。<br>
+
+## About DNCL
+DNCL Specification (2011 Edition): https://web.archive.org/web/20220707074107/https://www.dnc.ac.jp/albums/abm00004841.pdf<br>
+(The original URL is no longer available, so an archived URL is provided.)
 
 # Explanation (説明)
 
 <details><summary>For English Readers </summary>
-
-## DNCL (2011)
-DNCL Specification (2011 Edition): https://web.archive.org/web/20220707074107/https://www.dnc.ac.jp/albums/abm00004841.pdf<br>
-(The original URL is no longer available, so an archived URL is provided.)
 
 ## Notes
 
@@ -59,10 +58,6 @@ To achieve equivalent output to `expected-run-output.txt`, you must make adjustm
 </details>
 
 <details><summary>日本人の方へ</summary>
-
-## DNCL(2011)
-DNCL仕様書(2011年度版): https://web.archive.org/web/20220707074107/https://www.dnc.ac.jp/albums/abm00004841.pdf<br>
-(元のURLが使えなくなっているためアーカイブサイトのURLを載せてあります。)
 
 ## 注意点
 
