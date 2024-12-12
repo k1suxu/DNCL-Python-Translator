@@ -1,4 +1,4 @@
-Namaeのすべての値を"NONE"にする
+Namaeのすべての値を「」にする
 Tokutenのすべての値を0にする
 Namae[1]←「はるこ」, Tokuten[1]←73
 Namae[2]←「なつお」, Tokuten[2]←77

@@ -18,7 +18,7 @@ def range(start :int | float, end :int | float, inc :int | float) -> list:
 
 
 
-Namae = defaultdict(lambda : "NONE")
+Namae = defaultdict(lambda : "")
 Tokuten = defaultdict(lambda : 0)
 Namae[1-1]="はるこ"
 Tokuten[1-1]=73

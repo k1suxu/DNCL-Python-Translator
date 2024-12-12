@@ -1,6 +1,6 @@
-Sujiのすべての値を"NONE"にする
-KuraiMojiのすべての値を"NONE"にする
-OkinaKuraiMojiのすべての値を"NONE"にする
+Sujiのすべての値を「」にする
+KuraiMojiのすべての値を「」にする
+OkinaKuraiMojiのすべての値を「」にする
 Suji[1]←「」,Suji[2]←「二」,Suji[3]←「三」
 Suji[4]←「四」,Suji[5]←「五」,Suji[6]←「六」
 Suji[7]←「七」,Suji[8]←「八」,Suji[9]←「九」

@@ -19,7 +19,7 @@ def range(start :int | float, end :int | float, inc :int | float) -> list:
 
 
 tyotensu=8
-Hen = defaultdict(lambda : defaultdict(lambda : "NONE"))
+Hen = defaultdict(lambda : defaultdict(lambda : ""))
 Hen=[
 ["-","A","B","-","A","-","A","B"],
 ["-","-","-","C","A","-","A","C"],

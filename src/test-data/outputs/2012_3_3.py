@@ -18,7 +18,7 @@ def range(start :int | float, end :int | float, inc :int | float) -> list:
 
 
 
-Sara = defaultdict(lambda : "NONE")
+Sara = defaultdict(lambda : "")
 Sara[1-1]="右"
 Sara[2-1]="左"
 i=0
