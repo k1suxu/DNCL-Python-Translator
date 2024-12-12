@@ -51,7 +51,7 @@ To achieve equivalent output to `expected-run-output.txt`, you must make adjustm
 
 <br>
 *Note*: The programs `2014_3_2`, `2014_3_3`, and `2015_3_3` exhibit unexpected behavior and produce different execution results.<br>
-- For the first two, this is due to size definitions for arrays.
+- For the first two, this is due to the deference of the way to print an array.
 - For the third, differences arise from out-of-bound array references.
 </details>
 
@@ -95,6 +95,6 @@ numberが数値型、textが文字列型の変数であるとき、"number+text"
 
 <br>
 *注意* 2014_3_2,2014_3_3,2015_3_3は想定していない挙動を含むコードのため実行結果が異なります。<br>
-前者2つは配列に対するサイズ定義、3つ目は配列外参照による挙動差が原因です。<br>
+前者2つは配列の出力方法の定義、3つ目は配列外参照による挙動差が原因です。<br>
 =======
 </details>
