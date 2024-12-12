@@ -14,7 +14,7 @@ for input_file in $input_files
 do
     echo "[Start]: Translate $input_file"
     dos2unix test-data/inputs/$input_file # 改行コードを変換
-    ./a.out test-data/inputs/$input_file test-data/outputs/${input_file%.txt}.py > test-data/translate-logs/$input_file >& test-data/translate-error-logs/$input_file
+    ./a.out test-data/inputs/$input_file test-data/outputs/${input_file%.txt}.py > test-data/translate-logs/$input_file 2> test-data/translate-error-logs/$input_file
     echo "[Finish]: Successfully Translated"
     echo "==================================================="
 done

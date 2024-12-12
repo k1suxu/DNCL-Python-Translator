@@ -1,0 +1,4 @@
+Start Reading the Original Text
+Finish Reading the Original Text
+Start Writing the Translated Text
+Finish Writing the Translated Text
