@@ -1,7 +1,64 @@
-# DNCL-Python-Translator
-This translates code written in DNCL(2011) into Python<br>
-DNCL(2011)で書かれたコードをPythonコードに翻訳します。<br>
 
+# DNCL-Python-Translator
+This tool translates code written in DNCL (2011) into Python.<br>
+DNCL (2011) のコードを Python コードに翻訳します。<br>
+
+# Explanation (説明)
+
+<details><summary>For English Readers </summary>
+
+## DNCL (2011)
+DNCL Specification (2011 Edition): https://web.archive.org/web/20220707074107/https://www.dnc.ac.jp/albums/abm00004841.pdf<br>
+(The original URL is no longer available, so an archived URL is provided.)
+
+## Notes
+
+### Addition of String and Numeric Types
+In DNCL 2011, the addition of string and numeric types is undefined. Therefore, you need to adjust the translated file as necessary.<br>
+For example, if `number` is a numeric type and `text` is a string type, and the operation `number+text` is intended as string concatenation, you must modify the translated code from `number+text` to `str(number)+text`.
+
+### Display Function
+By default, the behavior of the display function in DNCL is as follows (unless otherwise specified):<br>
+- No spaces between arguments.<br>
+- A newline is added after output.<br>
+
+In the translated Python code, you can modify the output formatting by adjusting the `print` function arguments:
+- Use the `sep=''` parameter to change the separator between arguments.
+- Use the `end='\n'` parameter to modify whether or not a newline is added after the output.
+
+# Running Tests
+By executing the `make test` command in the `src/` directory, a Docker container will launch, and the translation process will be applied to each file in `src/test-data/inputs/*`. The following output files will be generated:
+- `src/test-data/outputs/*` (translation results)
+- `src/test-data/translate-logs/*` (translation logs)
+- `src/test-data/translate-error-logs/*` (error logs from translation)
+- `src/test-data/run-outputs/*` (execution results of the generated Python files)
+- `src/test-data/run-error-logs/*` (execution errors from the generated Python files)
+- `src/test-data/combined-run-output.txt` (consolidated execution results of the Python files)
+- `src/test-data/combined-run-error-log.txt` (consolidated execution errors of the Python files)
+
+## Sample Code
+The `src/test-data` directory contains sample DNCL (2011) code (`inputs/*.txt`) and their Python translation results (`outputs/*.py`). These DNCL (2011) samples are adapted versions of [Donkuri](https://dolittle.eplang.jp/dncl)'s sample programs modified to conform to the DNCL (2011) specification.
+
+## Execution Results of Sample Code
+The `src/test-data/run-outputs` directory contains execution results of the sample code. The file `src/test-data/combined-run-output.txt` contains the results of the translated Python code, while `src/test-data/expected-run-output.txt` contains the results of the original DNCL (2011) code.<br>
+To achieve equivalent output to `expected-run-output.txt`, you must make adjustments to the translated program as described in the "Notes" section. Specifically, the following modifications are required:<br>
+
+| Location       | Before Change       | After Change         |
+|:--------------:|:-------------------:|:--------------------:|
+| 2008_3_2 line 48 | Tokuten[i-1]        | str(Tokuten[i-1])    |
+| 2008_3_3 line 52 | Tokuten[i-1]        | str(Tokuten[i-1])    |
+| 2011_3_2 line 60 | Tenjun[num-1]       | str(Tenjun[num-1])   |
+| 2011_3_2 line 60 | Tenban[num-1]       | str(Tenban[num-1])   |
+| 2018_3_2 lines 54, 56, 59 | end='\n' | end=''               |
+| 2018_3_3 lines 55, 57, 60 | end='\n' | end=''               |
+
+<br>
+*Note*: The programs `2014_3_2`, `2014_3_3`, and `2015_3_3` exhibit unexpected behavior and produce different execution results.<br>
+- For the first two, this is due to size definitions for arrays.
+- For the third, differences arise from out-of-bound array references.
+</details>
+
+<details><summary>日本人の方へ</summary>
 
 ## DNCL(2011)
 DNCL仕様書(2011年度版): https://web.archive.org/web/20220707074107/https://www.dnc.ac.jp/albums/abm00004841.pdf<br>
@@ -49,3 +106,4 @@ numberが数値型、textが文字列型の変数であるとき、"number+text"
 *注意* 2014_3_2,2014_3_3,2015_3_3は想定していない挙動を含むコードのため実行結果が異なります。<br>
 前者2つは配列に対するサイズ定義、3つ目は配列外参照による挙動差が原因です。<br>
 =======
+</details>
