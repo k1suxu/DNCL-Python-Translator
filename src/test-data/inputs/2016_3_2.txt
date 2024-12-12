@@ -1,0 +1,16 @@
+HKosuのすべての値を0にする
+HOmosaのすべての値を0にする
+SOmosaのすべての値を0にする
+SOmosa←{2,8,1,1,6,6,1,2}
+syohinsu←8
+hakosu←0
+iを1からsyohinsuまで1ずつ増やしながら，
+        j←1
+        HOmosa[j]+SOmosa[i]>9またはHKosu[i]=4の間，
+                j←j+1
+        を繰り返す
+        iと「番の商品を」とjと「番の箱に入れる」を表示する
+        HOmosa[j]←HOmosa[j]+SOmosa[i]，HKosu[j]←HKosu[j]+1
+        もしj>hakosuならばhakosu←j
+を繰り返す
+「必要な箱の数は」とhakosuと「である」を表示する
