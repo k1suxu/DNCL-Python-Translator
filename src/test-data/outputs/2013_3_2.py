@@ -34,7 +34,7 @@ for i in range(1, 8, 1) :
             
         
     
-print("開始時間帯は", kaisi, ", し,", sep='', end='\n')
-print("終了時間帯は", syuryo, ", する。", sep='', end='\n')
+print("開始時間帯は", kaisi, "とし,", sep='', end='\n')
+print("終了時間帯は", syuryo, "とする。", sep='', end='\n')
 print("総利益の最大値は", saidaiRieki, "千円である。", sep='', end='\n')
 
