@@ -7,7 +7,7 @@ const std::wstring tab = L"    ";
 std::map<int, std::map<std::wstring, std::deque<std::tuple<std::wstring, int, int>>>> Undeclared_Arrays;
 std::map<std::wstring, std::deque<int>> pc;
 std::vector<std::wstring> Arrays;
-std::vector<std::wstring> output = {L"#coding: shift_jis\n\n#Template Zone\nfrom collections import defaultdict\n\ndef range(start :float, end :float, inc :float) -> list:\n    list = []\n    if inc > 0:\n        while start <= end:\n            list.append(start)\n            start = start + inc\n    else:\n        while start >= end:\n            list.append(start)\n            start = start + inc\n    return list\n\n#Your Translated Code Zone\n\n\n"};
+std::vector<std::wstring> output = {L"#Template Zone\nfrom collections import defaultdict\n\n# DNCLの仕様に基づきfor文を閉区間にオーバーライド\ndef range(start :int | float, end :int | float, inc :int | float) -> list:\n    list = []\n    if inc > 0:\n        while start <= end:\n            list.append(start)\n            start = start + inc\n    else:\n        while start >= end:\n            list.append(start)\n            start = start + inc\n    return list\n\n#Your Translated Code Zone\n\n\n"};
 int id = 1;
 
 class translator {
@@ -99,31 +99,31 @@ private:
         //     return wc >= L'０' && wc <= L'９';
         // };
 
-        auto apply = [&](std::wstring &str, wchar_t wc) -> void {
+        auto apply = [&](wchar_t wc) -> void {
             switch (wc) {
-                case L'←': str.push_back(L'='); break;
-                case L'、': case L'，': str.push_back(L','); break;
-                case L'「': str.push_back(L'"'); close_id = L"」"; break;
-                case L'」': str.push_back(L'"'); break;
-                case L'”': str.push_back(L'"'); close_id = L"”"; break;
-                case L'＋': str.push_back(L'+'); break;
-                case L'ー': str.push_back(L'-'); break;
-                case L'×': str.push_back(L'*'); break;
-                case L'÷': str.push_back(L'/'); break;
-                case L'％': str.push_back(L'%'); break;
-                case L'（': str.push_back(L'('); break;
-                case L'）': str.push_back(L')'); break;
-                case L'＝': str.push_back(L'='); break;
-                case L'≠': str.push_back(L'!'); break;
-                case L'＞': str.push_back(L'>'); break;
-                case L'＜': str.push_back(L'<'); break;
-                case L'≦': str.push_back(L'<'); break;
-                case L'≧': str.push_back(L'>'); break;
+                case L'←': ret.push_back(L'='); break;
+                case L'、': case L'，': ret.push_back(L','); break;
+                case L'「': ret.push_back(L'"'); close_id = L"」"; break;
+                case L'」': ret.push_back(L'"'); break;
+                case L'”': ret.push_back(L'"'); close_id = L"”"; break;
+                case L'＋': ret.push_back(L'+'); break;
+                case L'ー': ret.push_back(L'-'); break;
+                case L'×': ret.push_back(L'*'); break;
+                case L'÷': ret += L"//"; break;
+                case L'％': ret.push_back(L'%'); break;
+                case L'（': ret.push_back(L'('); break;
+                case L'）': ret.push_back(L')'); break;
+                case L'＝': ret += L"=="; break;
+                case L'≠': ret += L"!="; break;
+                case L'＞': ret.push_back(L'>'); break;
+                case L'＜': ret.push_back(L'<'); break;
+                case L'≦': ret += L"<="; break;
+                case L'≧': ret += L">="; break;
                 case L'０': case L'１': case L'２': case L'３': case L'４':
                 case L'５': case L'６': case L'７': case L'８': case L'９':
-                    str.push_back(wc - L'０' + L'0');
+                    ret.push_back(wc - L'０' + L'0');
                     break;
-                default: str.push_back(wc); break;
+                default: ret.push_back(wc); break;
             }
         };
 
@@ -133,7 +133,7 @@ private:
             if (!close_id.empty()) {
                 // クローズIDが設定されている場合
                 if (wc == close_id.front()) {
-                    apply(ret, wc);
+                    apply(wc);
                     close_id.clear();
                 }else {
                     ret.push_back(wc);
@@ -146,10 +146,12 @@ private:
                 } else if (wc == L'=') {
                     ret += L"==";
                 } else {
-                    apply(ret, wc);
+                    apply(wc);
                 }
             }
         }
+
+        std::wcerr << ret << std::endl;
 
         return ret;
     }
@@ -812,12 +814,12 @@ int main(int argc, char* argv[]) {
 
     std::vector<std::wstring> lines;
     std::wstring line;
-    std::cerr << "Start Reading the Original Text" << std::endl;
+    std::cout << "Start Reading the Original Text" << std::endl;
     while (getline(input_file, line)) lines.push_back(line);
     lines.push_back(L"を実行する");
     input_file.close();
 
-    std::cerr << "Finish Reading the Original Text" << std::endl;
+    std::cout << "Finish Reading the Original Text" << std::endl;
 
     translator solver;
     for(const std::wstring i : lines) {
@@ -826,7 +828,7 @@ int main(int argc, char* argv[]) {
         id++;
     }
 
-    std::cerr << "Start Writing the Translated Text" << std::endl;
+    std::cout << "Start Writing the Translated Text" << std::endl;
 
     std::string output_filepath = argv[2];
     std::wofstream output_file(output_filepath);
@@ -838,6 +840,6 @@ int main(int argc, char* argv[]) {
     for(const std::wstring i : output) output_file << i << std::endl;
     output_file.close();
 
-    std::cerr << "Finish Writing the Translated Text" << std::endl;
+    std::cout << "Finish Writing the Translated Text" << std::endl;
     return 0;
 }
