@@ -1,6 +1,6 @@
-Gakuhuのすべての値を"NONE"にする
-Patanのすべての値を"NONE"にする
-Kakegoeのすべての値を"NONE"にする
+Gakuhuのすべての値を「」にする
+Patanのすべての値を「」にする
+Kakegoeのすべての値を「」にする
 Gakuhu←{"ダ","ダ","ダ","ダ","ダ","ダ","ン","終"}
 Patan←{"ダ","ダ","声"}
 yameru←0，i←1

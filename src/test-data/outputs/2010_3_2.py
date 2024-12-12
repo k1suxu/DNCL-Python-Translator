@@ -18,8 +18,8 @@ def range(start :int | float, end :int | float, inc :int | float) -> list:
 
 
 
-Suji = defaultdict(lambda : "NONE")
-KuraiMoji = defaultdict(lambda : "NONE")
+Suji = defaultdict(lambda : "")
+KuraiMoji = defaultdict(lambda : "")
 Suji[1-1]=""
 Suji[2-1]="二"
 Suji[3-1]="三"

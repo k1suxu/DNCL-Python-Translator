@@ -670,7 +670,7 @@ private:
                     words.push_back(sentence.substr(left, i-left) + L",");
                     left = i+1;
                 }else if(sentence[i] == '"') {
-                    in_bracket = false;
+                    in_bracket = true;
                 }
             }
             

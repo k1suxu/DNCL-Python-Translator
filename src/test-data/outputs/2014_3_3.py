@@ -18,9 +18,9 @@ def range(start :int | float, end :int | float, inc :int | float) -> list:
 
 
 
-Gakuhu = defaultdict(lambda : "NONE")
-Patan = defaultdict(lambda : "NONE")
-Kakegoe = defaultdict(lambda : "NONE")
+Gakuhu = defaultdict(lambda : "")
+Patan = defaultdict(lambda : "")
+Kakegoe = defaultdict(lambda : "")
 Gakuhu=["ダ","ダ","ダ","ダ","ダ","ダ","ン","終"]
 Patan=["ダ","ダ","声"]
 yameru=0
