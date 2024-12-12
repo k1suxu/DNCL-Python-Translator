@@ -1,7 +1,7 @@
 # DNCL-Python-Translator
 This translates code written in DNCL(2011) into Python<br>
 DNCL(2011)で書かれたコードをPythonコードに翻訳します。<br>
-__翻訳前ソースコードの最後(または適当な行)に"FINISH CODE"と書く必要があり、行頭からその行までを翻訳します。__
+
 
 ## DNCL(2011)
 DNCL仕様書(2011年度版): https://web.archive.org/web/20220707074107/https://www.dnc.ac.jp/albums/abm00004841.pdf<br>
@@ -19,12 +19,12 @@ numberが数値型、textが文字列型の変数であるとき、"number+text"
 のように動作します。引数間の文字については、翻訳後のPythonファイル内print関数の引数のうち「sep=''」の部分を変更することにより 変えることができます。また、改行の有無はprint関数の引数のうち「end='\n'」の部分をへんこうすることにより、変えることができます。
 
 ## サンプルコードについて
-Input_Data, Output_DataにはDNCL(2011)のサンプルコード及び、その翻訳結果(Python)が存在します。なお、DNCL(2011)のサンプルコードは[どんくり](https://dolittle.eplang.jp/dncl)
+`src/test-data`内にはDNCL(2011)のサンプルコード(`inputs/*.txt`及び、その翻訳結果(Python)(`outputs/*.py`)が存在します。なお、DNCL(2011)のサンプルコードは[どんくり](https://dolittle.eplang.jp/dncl)
 のサンプルプログラムをDNCL(2011)仕様に少し改変したものになります。
 
 ## サンプルコードにおける実行結果
-Execute_Dataにはサンプルコードの実行結果が載っています。Mine.txtが翻訳後Pythonコードの実行結果、どんくり.txtが翻訳前DNCL(2011)コードの実行結果です。<br>
-なお、Mine.txtについては、「注意点」の欄の通り適宜翻訳後のプログラムに変更を加えたものを実行しています。具体的には以下の通りです。<br>
+`src/test-data/run-outputs`にはサンプルコードの実行結果が載っています。`src/test-data/combined-run-output.txt`が翻訳後Pythonコードの実行結果、`src/test-data/expected-run-output.txt`が翻訳前DNCL(2011)コードの実行結果です。<br>
+なお、`expected-run-output.txt`と対応のとれた出力を得るためには、「注意点」の欄の通り適宜翻訳後のプログラムに変更を加える必要があります。具体的には以下の通りです。<br>
 
 |該当箇所|変更前|変更後|
 |:---:|:---:|:---:|
