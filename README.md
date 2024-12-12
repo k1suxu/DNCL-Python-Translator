@@ -19,7 +19,14 @@ numberが数値型、textが文字列型の変数であるとき、"number+text"
 のように動作します。引数間の文字については、翻訳後のPythonファイル内print関数の引数のうち「sep=''」の部分を変更することにより 変えることができます。また、改行の有無はprint関数の引数のうち「end='\n'」の部分をへんこうすることにより、変えることができます。
 
 # テストの実行について
-`src/`ディレクトリ直下にて`make test`コマンドを実行することでDockerコンテナが立ち上がり、`src/test-data/inputs/*`の各ファイルに対して翻訳が実行され、その実行結果が`src/test-data/outputs/*`に、実行時の正常ログが`src/test-data/translate-logs/*`に、異常ログが`src/test-data/translate-error-logs/*`に生成されます。また、`src/test-data/outputs/*`の各pythonファイルを実行し、その実行結果が`src/test-data/run-outputs/*`に、実行時のエラーが`src/test-data/run-error-logs/*`に出力され、またそれらをすべて一つのテキストファイルにまとめたものが`src/test-data/combined-run-output.txt`および`src/test-data/combined-run-error-log.txt`に出力されます。
+`src/`ディレクトリ直下にて`make test`コマンドを実行することでDockerコンテナが立ち上がり、`src/test-data/inputs/*`の各ファイルに対して翻訳が実行され、以下のファイルが出力されます。
+- `src/test-data/outputs/*` (翻訳結果)
+- `src/test-data/translate-logs/*` (翻訳時の正常ログ)
+- `src/test-data/translate-error-logs/*` (翻訳時の異常ログ)
+- `src/test-data/run-outputs/*` (生成された各Pythonファイルの実行結果)
+- `src/test-data/run-error-logs/*` (生成された各Pythonファイルの実行時エラー)
+- `src/test-data/combined-run-output.txt` (生成された各Pythonファイルの実行結果を一つのテキストファイルにまとめたもの)
+- `src/test-data/combined-run-error-log.txt` (生成された各Pythonファイルの実行時エラーを一つのテキストファイルにまとめたもの)
 
 ## サンプルコードについて
 `src/test-data`内にはDNCL(2011)のサンプルコード(`inputs/*.txt`及び、その翻訳結果(Python)(`outputs/*.py`)が存在します。なお、DNCL(2011)のサンプルコードは[どんくり](https://dolittle.eplang.jp/dncl)
