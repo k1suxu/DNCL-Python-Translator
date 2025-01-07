@@ -1,0 +1,23 @@
+Gakuhuのすべての値を"NONE"にする
+Patanのすべての値を"NONE"にする
+Kakegoeのすべての値を"NONE"にする
+Gakuhu←{"ダ","カ","ン","コ","ド","終"}
+Patan←{"カ","ン","コ","声"}
+yameru←0，i←1
+yameru＝0の間，
+        itti←0,j←1
+        Patan[j]≠「声」の間，
+                もしGakuhu[i+j-1]=Patan[j]ならば
+                        itti←itti+1
+                を実行する
+                j←j+1
+        を繰り返す
+        もしGakuhu[i+j-1]=「終」ならばyameru←1
+        もしitti=j-1ならば
+                Kakegoe[i+j-1]←「▽」
+        を実行する
+        i←i+1
+を繰り返す
+Kakegoeを表示する
+
+FINISH CODE

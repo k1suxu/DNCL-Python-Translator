@@ -1,0 +1,18 @@
+Saraのすべての値を"NONE"にする
+Sara[1]←「右」,Sara[2]←「左」
+i←0
+Kekka2のすべての値を0にする
+x←97
+x>0の間，
+        amari←x%3, x←x÷3
+        Kekka2[i]←amari
+        もしamari=2ならばx←x+1
+        i←i+1
+を繰り返す
+jを6から0まで1ずつ減らしながら，
+        もしKekka2[j]≠0ならば
+                jと「番の分銅を」とSara[Kekka2[j]]と「の皿にのせる。」を表示する
+        を実行する
+を繰り返す
+
+FINISH CODE
