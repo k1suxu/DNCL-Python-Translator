@@ -1,0 +1,25 @@
+Namaeのすべての値を「」にする
+Tokutenのすべての値を0にする
+Namae[1]←「はるこ」, Tokuten[1]←73
+Namae[2]←「なつお」, Tokuten[2]←77
+Namae[3]←「あきよ」, Tokuten[3]←81
+Namae[4]←「ふゆき」, Tokuten[4]←68
+
+jを4-1から1まで1ずつ減らしながら、
+    iを1からjまで１ずつ増やしながら、
+        もしTokuten[i]<Tokuten[i+1]ならば
+            n ← Namae[i]
+            Namae[i]←Namae[i+1]
+            Namae[i+1]←n
+            t←Tokuten[i]
+            Tokuten[i]←Tokuten[i+1]
+            Tokuten[i+1]←t
+        を実行する
+    を繰り返す
+を繰り返す
+
+
+iを1から4まで1ずつ増やしながら、
+    txt←Namae[i]+":"+Tokuten[i]
+    txtを表示する
+を繰り返す

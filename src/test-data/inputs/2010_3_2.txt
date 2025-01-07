@@ -1,0 +1,23 @@
+Sujiのすべての値を「」にする
+KuraiMojiのすべての値を「」にする
+Suji[1]←「」,Suji[2]←「二」,Suji[3]←「三」
+Suji[4]←「四」,Suji[5]←「五」,Suji[6]←「六」
+Suji[7]←「七」,Suji[8]←「八」,Suji[9]←「九」
+KuraiMoji[4]←「千」, KuraiMoji[3]←「百」
+KuraiMoji[2]←「十」, KuraiMoji[1]←「」
+
+kurai←1000
+n←231
+ketaを4から1まで1ずつ減らしながら、
+    d←n÷kurai
+    もしd≠0ならば
+        もしd=1かつketa=1ならば
+            「一」を表示する
+        を実行し、そうでなければ
+            Suji[d]を表示する
+            KuraiMoji[keta]を表示する
+        を実行する
+    を実行する
+    n←n%kurai
+    kurai←kurai÷10
+を繰り返す

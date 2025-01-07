@@ -1,3 +1,10 @@
 .vscode
-src/test-data
+src/test-data/outputs
+src/test-data/run-error-logs
+src/test-data/run-outputs
+src/test-data/translate-error-logs
+src/test-data/translate-logs
+src/test-data/combined-run-error-log.txt
+src/test-data/combined-run-output.txt
+src/test-data/expected-run-output.txt
 src/a.out
