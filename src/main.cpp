@@ -1,4 +1,11 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <map>
+#include <queue>
+#include <stack>
+#include <functional>
+#include <cassert>
 
 int process_count = 0;
 int in_sentence_cnt = 0;
