@@ -6,6 +6,12 @@ This tool translates code written in DNCL (2011) into Python.<br>
 DNCL Specification (2011 Edition): https://web.archive.org/web/20220707074107/https://www.dnc.ac.jp/albums/abm00004841.pdf<br>
 (The original URL is no longer available, so an archived URL is provided.)
 
+## How to run test
+1. Clone this repository to your local environment.
+2. Navigate to the `src` directory.
+3. Run the `make` or `make test` command in the terminal.
+4. The results (including output files and error logs) will be generated in the `src/test-data` directory. (See the `Explanation` section below for more details.)
+
 # Explanation (説明)
 
 <details><summary>For English Readers </summary>
