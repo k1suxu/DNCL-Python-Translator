@@ -26,7 +26,7 @@ In the translated Python code, you can modify the output formatting by adjusting
 - Use the `end='\n'` parameter to modify whether or not a newline is added after the output.
 
 # Running Tests
-By executing the `make test` command in the `src/` directory, a Docker container will launch, and the translation process will be applied to each file in `src/test-data/inputs/*`. The following output files will be generated:
+By executing the `make` or `make test` command in the `src/` directory, a Docker container will launch, and the translation process will be applied to each file in `src/test-data/inputs/*`. The following output files will be generated:
 - `src/test-data/outputs/*` (translation results)
 - `src/test-data/translate-logs/*` (translation logs)
 - `src/test-data/translate-error-logs/*` (error logs from translation)
@@ -69,7 +69,7 @@ numberが数値型、textが文字列型の変数であるとき、"number+text"
 のように動作します。引数間の文字については、翻訳後のPythonファイル内print関数の引数のうち「sep=''」の部分を変更することにより 変えることができます。また、改行の有無はprint関数の引数のうち「end='\n'」の部分をへんこうすることにより、変えることができます。
 
 # テストの実行について
-`src/`ディレクトリ直下にて`make test`コマンドを実行することでDockerコンテナが立ち上がり、`src/test-data/inputs/*`の各ファイルに対して翻訳が実行され、以下のファイルが出力されます。
+`src/`ディレクトリ直下にて`make`または`make test`コマンドを実行することでDockerコンテナが立ち上がり、`src/test-data/inputs/*`の各ファイルに対して翻訳が実行され、以下のファイルが出力されます。
 - `src/test-data/outputs/*` (翻訳結果)
 - `src/test-data/translate-logs/*` (翻訳時の正常ログ)
 - `src/test-data/translate-error-logs/*` (翻訳時の異常ログ)
