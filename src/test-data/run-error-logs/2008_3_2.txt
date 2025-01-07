@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/app/test-data/outputs/2008_3_2.py", line 47, in <module>
-    txt=Namae[i-1]+":"+Tokuten[i-1]
-TypeError: can only concatenate str (not "int") to str

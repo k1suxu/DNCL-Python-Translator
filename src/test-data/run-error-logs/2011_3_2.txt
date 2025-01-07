@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/app/test-data/outputs/2011_3_2.py", line 59, in <module>
-    print(Tenjun[num-1]+":"+Tenban[num-1], sep='', end='\n')
-TypeError: unsupported operand type(s) for +: 'int' and 'str'
